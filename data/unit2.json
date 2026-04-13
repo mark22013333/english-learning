@@ -1,0 +1,178 @@
+{
+  "id": "unit2",
+  "title": "Daily Routine & Weekend Activities",
+  "level": "A1",
+  "icon": "🗓️",
+  "sections": [
+    {
+      "type": "vocabulary",
+      "title": "Vocabulary",
+      "items": [
+        { "word": "routine", "chinese": "日常生活", "example": "My morning routine starts with drinking coffee and checking emails." },
+        { "word": "schedule", "chinese": "行程 / 時間表", "example": "I follow a strict work schedule." },
+        { "word": "flexible", "chinese": "靈活的", "example": "Hybrid jobs offer flexible working hours." },
+        { "word": "productivity", "chinese": "生產力", "example": "Working from home improves my productivity." },
+        { "word": "commute", "chinese": "通勤", "example": "I commute to the office twice a week." },
+        { "word": "balance", "chinese": "平衡", "example": "Work-life balance is important." },
+        { "word": "deadline", "chinese": "截止日期", "example": "I finished the report before the deadline." },
+        { "word": "unwind", "chinese": "放鬆", "example": "I unwind by watching movies." },
+        { "word": "efficiently (adverb)", "chinese": "有效地", "example": "I have finished the project efficiently." },
+        { "word": "efficient (adjective)", "chinese": "高效的", "example": "I am an efficient programmer." },
+        { "word": "conscious effort", "chinese": "有意識地努力", "example": "Employees must make a conscious effort to disconnect from work." },
+        { "word": "discipline", "chinese": "紀律 /di-si-plin/", "example": "Hybrid work requires discipline and good communication." },
+        { "word": "blur", "chinese": "模糊", "example": "Remote work can blur the line between work and personal life." }
+      ]
+    },
+    {
+      "type": "phrases",
+      "title": "Common Phrases",
+      "items": [
+        { "phrase": "manage my schedule", "example": "I manage my schedule by using Google Calendar.", "question": "How do you manage your schedule?" },
+        { "phrase": "start the day with", "example": "I start my day with eating some breakfast.", "question": "How do you start your day?" },
+        { "phrase": "work remotely", "example": "I work remotely 4 times a week.", "question": "How often do you work remotely?" },
+        { "phrase": "go into the office", "example": "I go into the office every Friday.", "question": "When do you go to the office?" },
+        { "phrase": "disconnect from work", "example": "I disconnect from work at 6:00 PM every day and on the weekends.", "question": "When do you disconnect from work?" }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": "Grammar: Present Simple for Habits",
+      "subtitle": "Use Present Simple tense to talk about regular activities",
+      "items": [
+        {
+          "rule": "Frequency expressions",
+          "examples": ["usually", "often", "sometimes", "rarely"],
+          "usage": "Place before the main verb: \"I usually wake up at 7 AM.\""
+        },
+        {
+          "rule": "Daily routine pattern",
+          "examples": [
+            "I usually wake up at 7 AM.",
+            "Then I check my emails.",
+            "I take my kids to school.",
+            "I start my work at 9 AM.",
+            "I often have lunch at 12 noon.",
+            "I get back to work at 1 PM and finish at 6 PM.",
+            "Then, I have dinner with my family."
+          ],
+          "usage": "Use time markers and sequence words: then, after, before"
+        }
+      ]
+    },
+    {
+      "type": "conversation",
+      "title": "Schedule & Routine Questions",
+      "subtitle": "Practice answering these common questions",
+      "items": [
+        {
+          "question": "How's your schedule today?",
+          "answers": [
+            "I have a flexible schedule today.",
+            "I'm quite busy today.",
+            "I have a relaxing schedule today.",
+            "I'm not busy today.",
+            "Same as the other days."
+          ]
+        },
+        {
+          "question": "Do you have a deadline this week?",
+          "answers": [
+            "Yes, I have a deadline this week.",
+            "Yes, I have a deadline on Saturday.",
+            "No, I don't have a deadline this week."
+          ]
+        },
+        {
+          "question": "How do you unwind after work today?",
+          "answers": [
+            "I'm going to play games and watch TV after work today.",
+            "I'm going out with my family for dinner today.",
+            "I'm going to spend time with my kids after work today."
+          ]
+        },
+        {
+          "question": "What do you usually do after lunch?",
+          "answers": [
+            "I usually wake up at 7:00 AM. And I start my day drinking coffee...",
+            "I usually work at 1 PM to 6 PM.",
+            "But sometimes, I do my workout at home."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "roleplay",
+      "title": "Role Play: Hybrid Work Discussion",
+      "scenarios": [
+        {
+          "name": "Talking About Your Workday",
+          "dialogue": [
+            { "speaker": "Teacher", "line": "How does your typical workday look in a hybrid setup?" },
+            { "speaker": "Mark", "line": "On remote days, I start work around 8:30. I check emails and plan my tasks." },
+            { "speaker": "Teacher", "line": "Do you prefer working from home or in the office?" },
+            { "speaker": "Mark", "line": "I like both. At home I'm more productive, but the office is better for meetings." },
+            { "speaker": "Teacher", "line": "What do you usually do on weekends?" },
+            { "speaker": "Mark", "line": "I try to disconnect from work. I spend time with family or go hiking." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "title": "Reading: Hybrid Work — A New Daily Routine",
+      "paragraphs": [
+        {
+          "text": "In recent years, many companies have adopted hybrid working models. Employees divide their time between working from home and going to the office. This change has created new daily routines for workers.",
+          "key_vocab": ["adopted", "hybrid working models", "divide"]
+        },
+        {
+          "text": "For many people, mornings at home are more relaxed because they do not need to commute. Instead of spending an hour in traffic, they can begin their day earlier and more calmly. Workers often start their day by checking emails, planning tasks, and joining online meetings.",
+          "key_vocab": ["commute", "calmly", "planning tasks"]
+        },
+        {
+          "text": "However, hybrid work also requires strong time management skills. Without a manager nearby, employees must organize their own schedules and stay focused on their tasks.",
+          "key_vocab": ["time management skills", "organize", "stay focused"]
+        },
+        {
+          "text": "Weekends have also changed for many workers. Because remote work can blur the line between work and personal life, employees must make a conscious effort to disconnect from work and relax.",
+          "key_vocab": ["blur the line", "conscious effort", "disconnect"]
+        },
+        {
+          "text": "Overall, hybrid work offers flexibility, but it also requires discipline and good communication.",
+          "key_vocab": ["flexibility", "discipline", "communication"]
+        }
+      ],
+      "comprehension": [
+        { "question": "What is hybrid work?", "answer": "A working model by dividing the time between working from home and going to the office." },
+        { "question": "Why are mornings more relaxed for remote workers?", "answer": "Because they don't need to rush to the office (no commute)." },
+        { "question": "What skills are important for hybrid workers?", "answer": "Strong time management skills — being organized and staying focused on tasks." },
+        { "question": "Why can hybrid work blur work-life boundaries?", "answer": "Some employees don't follow work schedule because there's no manager and no strong time management." },
+        { "question": "What advantage does hybrid work provide?", "answer": "It can provide flexible time and save time travelling from home to work." }
+      ]
+    },
+    {
+      "type": "qa",
+      "title": "Discussion Questions",
+      "items": [
+        { "question": "What does your daily routine look like?", "hint": "I usually start my day by... In the morning I... In the afternoon I... After work I usually..." },
+        { "question": "Do you prefer working from home or in the office?", "hint": "I prefer... because..." },
+        { "question": "How do you manage your schedule?", "hint": "I use... to manage my schedule." },
+        { "question": "What do you usually do on weekends?", "hint": "I usually spend my weekends..." },
+        { "question": "How do you relax after work?", "hint": "I usually... after work." }
+      ]
+    },
+    {
+      "type": "notes",
+      "title": "Class Notes",
+      "subtitle": "Extra vocabulary and notes from lessons",
+      "items": [
+        { "point": "Greetings for daily use", "detail": "How are you today? / How's your day today? / How's it going? / What's up? → Fine, good, not bad, not much, great", "chinese": "日常問候語" },
+        { "point": "Negative responses", "detail": "not good, bad, not fine, busy day", "chinese": "負面回應" },
+        { "point": "Household chores (家務活)", "detail": "cleaning, washing dishes, cooking, doing laundry (washing clothes)", "chinese": "家事" },
+        { "point": "Weekday terms", "detail": "Weekdays/Workdays/School days = Monday to Friday; Weekends = Saturday and Sunday; Holidays = special days with no work (e.g. Lunar New Year, Qingming Festival)", "chinese": "工作日、週末、假日" },
+        { "point": "Workout vocabulary", "detail": "workout = exercise at home / gym / practice; using weights = dumbbells, barbells / heavy equipment for exercise; Leisure Time = past time", "chinese": "運動相關詞彙" },
+        { "point": "Pronunciation tips", "detail": "-ty = tee (e.g. technology: tek-no-lo-gee); -ly = lee; -gy = gee; discipline = /di-si-plin/", "chinese": "發音提示" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "unit1",
+    "title": "Self-Introduction",
+    "level": "A1",
+    "file": "data/unit1.json",
+    "icon": "👋",
+    "description": "Introduce yourself, talk about your job, responsibilities, and goals."
+  },
+  {
+    "id": "unit2",
+    "title": "Daily Routine & Weekend Activities",
+    "level": "A1",
+    "file": "data/unit2.json",
+    "icon": "🗓️",
+    "description": "Describe your daily schedule, work habits, and weekend activities."
+  }
+]

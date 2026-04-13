@@ -1,0 +1,132 @@
+{
+  "id": "unit1",
+  "title": "Self-Introduction",
+  "level": "A1",
+  "icon": "👋",
+  "sections": [
+    {
+      "type": "vocabulary",
+      "title": "Vocabulary",
+      "items": [
+        { "word": "introduce", "chinese": "介紹", "example": "Let me introduce myself." },
+        { "word": "software engineer", "chinese": "軟體工程師", "example": "I am a software engineer." },
+        { "word": "develop", "chinese": "開發", "example": "I develop mobile applications." },
+        { "word": "project", "chinese": "專案", "example": "I am working on a new project." },
+        { "word": "experience", "chinese": "經驗", "example": "I have five years of experience." },
+        { "word": "company", "chinese": "公司", "example": "I work for an international company." },
+        { "word": "team", "chinese": "團隊", "example": "I work in a small team." },
+        { "word": "specialize in", "chinese": "專門從事", "example": "I specialize in software development." },
+        { "word": "improve", "chinese": "改善 / 提升", "example": "I want to improve my English." },
+        { "word": "goal", "chinese": "目標", "example": "My goal is to become a senior engineer." }
+      ]
+    },
+    {
+      "type": "practice",
+      "title": "Introducing Yourself",
+      "subtitle": "Practice building your self-introduction",
+      "exercises": [
+        {
+          "label": "Basic (Practice 1)",
+          "lines": [
+            "Hello. My name is Mark.",
+            "I am a software engineer.",
+            "I work for a tech company.",
+            "I develop web applications.",
+            "I have three years of experience.",
+            "Nice to meet you."
+          ]
+        },
+        {
+          "label": "Extended (Practice 2)",
+          "lines": [
+            "Hello, my name is Mark.",
+            "I'm a software engineer at a tech company.",
+            "I specialize in software development.",
+            "Currently, I am working on a cloud project.",
+            "I have about five years of experience in this field.",
+            "I enjoy solving technical problems and working with my team.",
+            "My goal is to improve my skills and become a senior engineer.",
+            "Nice to meet you."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fill_blank",
+      "title": "Sentence Building",
+      "subtitle": "Complete the sentences using the prompts",
+      "items": [
+        { "prompt": "\"software engineer\"", "template": "I am a ___.", "answer": "I am a software engineer." },
+        { "prompt": "\"three years / experience\"", "template": "I have ___ of experience.", "answer": "I have three years of experience." },
+        { "prompt": "\"improve English\"", "template": "I want to ___.", "answer": "I want to improve my English speaking skills." },
+        { "prompt": "\"goal\"", "template": "My goal is ___.", "answer": "My goal is to communicate in English fluently." },
+        { "prompt": "\"specialize in\"", "template": "I specialize in ___.", "answer": "I specialize in software development." },
+        { "prompt": "\"project\"", "template": "I'm working on ___.", "answer": "I'm working on a marketing software project." },
+        { "prompt": "\"develop\"", "template": "I develop ___.", "answer": "I develop new web applications." }
+      ]
+    },
+    {
+      "type": "qa",
+      "title": "Personal Questions",
+      "items": [
+        { "question": "What is your name?", "hint": "My name is..." },
+        { "question": "What do you do?", "hint": "I am a... (job/occupation)" },
+        { "question": "Where do you work?", "hint": "I work for/at..." },
+        { "question": "What do you develop?", "hint": "I develop..." },
+        { "question": "How many years of experience do you have?", "hint": "I have... years of experience." },
+        { "question": "What technology do you use?", "hint": "I use... (Java, Python, HTML, etc.)" },
+        { "question": "What is your goal?", "hint": "My goal is to..." }
+      ]
+    },
+    {
+      "type": "roleplay",
+      "title": "Role Play",
+      "scenarios": [
+        {
+          "name": "International Meeting",
+          "dialogue": [
+            { "speaker": "A", "line": "Hi, I don't think we've met before." },
+            { "speaker": "B", "line": "Hi, I'm Mark. I'm a software engineer." },
+            { "speaker": "A", "line": "Nice to meet you. What do you work on?" },
+            { "speaker": "B", "line": "I develop software services for cloud applications." },
+            { "speaker": "A", "line": "How long have you worked here?" },
+            { "speaker": "B", "line": "I have about three years of experience." }
+          ]
+        },
+        {
+          "name": "Online Tech Conference",
+          "dialogue": [
+            { "speaker": "A", "line": "Hello! Can you introduce yourself?" },
+            { "speaker": "B", "line": "Sure. My name is Mark. I'm a software engineer from Taiwan." },
+            { "speaker": "A", "line": "What do you specialize in?" },
+            { "speaker": "B", "line": "I specialize in backend development." },
+            { "speaker": "A", "line": "What is your goal this year?" },
+            { "speaker": "B", "line": "My goal is to improve my English and technical skills." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tips",
+      "title": "Transition Phrases",
+      "subtitle": "Use these to make your introduction flow better",
+      "items": [
+        { "phrase": "Currently...", "chinese": "目前", "example": "Currently, I am working on a cloud project." },
+        { "phrase": "In my free time...", "chinese": "在空閒時間", "example": "In my free time, I study English." },
+        { "phrase": "In the future...", "chinese": "未來", "example": "In the future, I hope to lead a development team." },
+        { "phrase": "I'm interested in...", "chinese": "我對…感興趣", "example": "I'm interested in cloud computing." }
+      ]
+    },
+    {
+      "type": "notes",
+      "title": "Grammar Notes",
+      "subtitle": "Common patterns from class",
+      "items": [
+        { "point": "Article before job titles", "detail": "Always use 'a' before job titles: \"I am a software engineer\" (not \"I am software engineer\")", "chinese": "職業名稱前要加 'a'" },
+        { "point": "Preposition: work for / work at", "detail": "\"I work for a tech company\" or \"I work at a tech company\" — both are correct", "chinese": "'work for' 和 'work at' 都可以" },
+        { "point": "Goal + infinitive", "detail": "\"My goal is to + verb\": My goal is to become a staff engineer.", "chinese": "目標後面接 to + 動詞" },
+        { "point": "Currently + present continuous", "detail": "\"Currently, I am working on...\" uses present continuous for ongoing projects.", "chinese": "'Currently' 搭配現在進行式" }
+      ]
+    }
+  ]
+}
