@@ -1,125 +1,111 @@
-# 📖 English Speaking Practice
+# English Learning with Kiddy — Personal Notes
 
-ESL A1 學習筆記靜態網站，使用 GitHub Pages 部署。
-
-## 🚀 部署到 GitHub Pages
-
-### 第一次設定
-
-1. 在 GitHub 建立新的 repository（例如 `english-learning`）
-2. 把這個資料夾的所有檔案 push 上去：
-
-```bash
-cd english-learning
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/你的帳號/english-learning.git
-git push -u origin main
-```
-
-3. 到 GitHub repo → **Settings** → **Pages**
-4. Source 選擇 **Deploy from a branch**
-5. Branch 選擇 **main** / **(root)**
-6. 點 Save，等幾分鐘後就能訪問：`https://你的帳號.github.io/english-learning/`
+> Yu (Mark) 的英文學習筆記資料夾 — 搭配 Kiddy 老師的 Speaking Lesson 課程進行練習與複習。
 
 ---
 
-## 📝 新增 Unit 的步驟
-
-### Step 1: 建立 JSON 資料檔
-
-在 `data/` 資料夾新增一個 JSON 檔案，例如 `unit3.json`：
-
-```json
-{
-  "id": "unit3",
-  "title": "你的 Unit 標題",
-  "level": "A1",
-  "icon": "🏢",
-  "sections": [
-    {
-      "type": "vocabulary",
-      "title": "Vocabulary",
-      "items": [
-        { "word": "meeting", "chinese": "會議", "example": "I have a meeting at 10 AM." }
-      ]
-    }
-  ]
-}
-```
-
-### Step 2: 更新 units.json
-
-在 `data/units.json` 加入新 unit 的資訊：
-
-```json
-{
-  "id": "unit3",
-  "title": "你的 Unit 標題",
-  "level": "A1",
-  "file": "data/unit3.json",
-  "icon": "🏢",
-  "description": "簡短描述這個 Unit 的內容。"
-}
-```
-
-### Step 3: Push 到 GitHub
-
-```bash
-git add .
-git commit -m "Add Unit 3"
-git push
-```
-
-GitHub Pages 會自動更新（通常 1-2 分鐘）。
-
----
-
-## 📋 可用的 Section 類型
-
-每個 Unit 的 `sections` 陣列可以包含以下類型：
-
-| type | 說明 | 用途 |
-|------|------|------|
-| `vocabulary` | 詞彙表 | 單字、中文、例句，可切換隱藏 |
-| `phrases` | 常用片語 | 片語 + 問句 + 範例回答 |
-| `grammar` | 文法結構 | 規則 + 用法說明 + 例句 |
-| `practice` | 練習對話 | 多行對話，可隱藏練習 |
-| `fill_blank` | 填空練習 | 提示 + 模板 + 可揭示答案 |
-| `qa` | 問答練習 | 問題 + 提示（點擊揭示） |
-| `conversation` | 對話問答 | 問題 + 多個回答選項 |
-| `roleplay` | 角色扮演 | 對話場景 |
-| `reading` | 閱讀理解 | 文章段落 + 重點單字 + 理解題 |
-| `tips` | 實用提示 | 片語 + 中文 + 例句 |
-| `notes` | 課堂筆記 | 重點 + 說明 + 中文 |
-
----
-
-## 📁 專案結構
+## 📁 Directory Structure 資料夾結構
 
 ```
 english-learning/
-├── index.html          ← 主頁面
-├── css/
-│   └── style.css       ← 樣式
-├── js/
-│   └── app.js          ← 應用邏輯
-├── data/
-│   ├── units.json      ← Unit 清單（新增 Unit 時要更新）
-│   ├── unit1.json      ← Unit 1 資料
-│   └── unit2.json      ← Unit 2 資料
-└── README.md           ← 本文件
+├── README.md                           # 這個檔案：總覽與使用說明
+├── dashboard.html                      # 🎨 視覺化儀表板 (在瀏覽器打開)
+├── dashboard-history/                  #    早期設計版本
+│
+├── units/                              # 📚 課本單元筆記
+│   ├── unit-01-self-introduction/      #    Unit 1: 自我介紹
+│   └── unit-02-daily-routine/          #    Unit 2: 日常作息與週末活動
+│
+├── sessions/                           # 🎯 每次練習的 session log
+│   └── YYYY-MM-DD-topic.md             #    (檔名格式：日期-主題)
+│
+├── grammar-reference/                  # 📖 跨單元通用的文法筆記
+│   ├── prepositions-of-time.md
+│   ├── frequency-expressions.md
+│   └── by-ving-and-parallel-structure.md
+│
+└── personal-notes/                     # 💡 個人常犯錯誤與學習重點
+    └── common-mistakes.md
 ```
 
 ---
 
-## ✨ 功能特色
+## 🎯 How to Use 如何使用
 
-- **Practice Mode**：隱藏文字，點擊逐行揭示
-- **Toggle 中文/例句**：詞彙表可切換顯示中文和例句
-- **點擊揭示答案**：填空和理解題的答案可點擊查看
-- **手機友善**：響應式設計，手機上也好用
-- **離線可用**：純靜態網站，無需後端
-- **易於更新**：只需編輯 JSON 檔案即可新增內容
+### 複習單元內容
+打開 `units/` 底下對應的資料夾，裡面有：
+- 詞彙表 (Vocabulary)
+- 常用片語 (Common Phrases)
+- 文法結構 (Grammar Structures)
+- 我的答案 (My Answers)
+
+### 複習某次練習
+打開 `sessions/` 底下的日期檔案，可以看到：
+- 那次練習的每個題目
+- 我的每次嘗試
+- Claude 給的 hints
+- 最後正確版本
+- 學到的重點
+
+### 查文法規則
+打開 `grammar-reference/` 查特定文法主題（preposition, frequency 等）。
+
+### 看我常犯的錯
+打開 `personal-notes/common-mistakes.md` — 這裡記錄了我重複出現的錯誤模式，每次練習前可以快速瀏覽。
+
+### 看視覺化儀表板
+在瀏覽器打開 `dashboard.html` — 這是一個包含所有進度、錯誤追蹤、文法範式的互動式儀表板，採用 Engineering Logbook 風格設計（warm walnut 配色，JetBrains Mono + IBM Plex Mono 字體）。
+
+`dashboard-history/` 資料夾保存了四個設計迭代版本，供設計參考。
+
+---
+
+## 🤖 For Future Claude Sessions
+
+如果你是未來的 Claude，這是繼續維護這個筆記系統的指引：
+
+### 新增 session log
+每次 Speaking practice 結束後，在 `sessions/` 建立新檔案：
+- 檔名格式：`YYYY-MM-DD-topic.md`（例如 `2026-04-26-unit3-shopping.md`）
+- 內容必須包含：每個題目的每次嘗試、修正重點、最終正確版本、學到的 patterns
+
+### 新增單元
+當 Yu 開始新單元時，在 `units/` 建立新資料夾（例如 `unit-03-xxx/`），並在其中建立 `notes.md`。
+
+### 更新 common-mistakes.md
+每次發現 Yu 有重複出現的錯誤，就更新 `personal-notes/common-mistakes.md`，並加上該錯誤最新出現的日期。
+
+### 新增文法主題
+當練習中出現新的通用文法 pattern，就在 `grammar-reference/` 建立新檔案（例如 `present-perfect.md`, `conditionals.md`）。
+
+### 更新這個 README
+每次新增重要檔案時，記得更新本 README 的目錄結構和 Session Index。
+
+---
+
+## 🗓️ Session Index 練習紀錄索引
+
+| 日期 | Unit | 主題 | 檔案 |
+|------|------|------|------|
+| 2026-04-19 | Unit 2 | Daily Routine Speaking Practice (Q1–Q3) | [sessions/2026-04-19-unit2-speaking-practice.md](sessions/2026-04-19-unit2-speaking-practice.md) |
+
+---
+
+## 📊 Progress Tracker 進度追蹤
+
+| Unit | 主題 | 狀態 |
+|------|------|------|
+| Unit 1 | Self-Introduction | ✅ Completed |
+| Unit 2 | Daily Routine & Weekend Activities | 🔄 In Progress |
+
+---
+
+## 🎓 My Learning Goals
+
+1. 提升英文口說流暢度，成為能自信介紹自己與日常工作的 engineer
+2. 目標晉升到 Staff Engineer 職位
+3. 每次練習都要抓出重複錯誤並逐步改善
+
+---
+
+*Last updated: 2026-04-19*

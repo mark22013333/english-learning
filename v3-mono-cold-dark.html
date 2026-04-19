@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Engineering Logbook — Yu Mark's Field Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* The dark desk */
+    --desk: #0D0E13;
+    --desk-soft: #131520;
+    --desk-light: #1C1F2D;
+    --desk-edge: #262A3B;
+
+    /* The paper */
+    --paper: #F0E6D2;
+    --paper-bright: #FBF4E3;
+    --paper-shadow: #D6CBB2;
+    --paper-edge: #C9BDA2;
+
+    /* Real ink colors */
+    --ink: #141416;
+    --ink-soft: #2B2A28;
+    --ink-light: #6A6657;
+
+    /* Annotation pens */
+    --highlight: #F4D940;
+    --highlight-deep: #D9B828;
+    --pen: #E84A38;
+    --pen-deep: #B9311D;
+    --eraser: #91C5B8;
+
+    /* Lamp glow */
+    --lamp-glow: rgba(244, 195, 82, 0.15);
+
+    /* Monospace system */
+    --mono-primary: "JetBrains Mono", ui-monospace, "Menlo", monospace;
+    --mono-accent: "IBM Plex Mono", "JetBrains Mono", monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--mono-primary);
+    background: var(--desk);
+    color: var(--paper);
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    font-feature-settings: "ss02", "calt";
+  }
+
+  /* Desk lamp glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -20vh;
+    right: -20vw;
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(ellipse, var(--lamp-glow) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Film grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 200;
+    mix-blend-mode: screen;
+  }
+
+  /* Blinking cursor */
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  .cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    background: var(--highlight);
+    vertical-align: -0.12em;
+    margin-left: 0.1em;
+    animation: blink 1.1s infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ═══════ INK / ANNOTATION STYLES ═══════ */
+
+  .highlighted {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      var(--highlight) 2%,
+      var(--highlight) 98%,
+      transparent 100%);
+    background-size: 100% 55%;
+    background-position: 0 65%;
+    background-repeat: no-repeat;
+    padding: 0 4px;
+    display: inline;
+  }
+
+  .penned {
+    position: relative;
+    display: inline-block;
+    color: var(--pen);
+  }
+  .penned::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -5px;
+    height: 6px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'><path d='M 0 5 Q 12 1, 25 5 T 50 5 T 75 5 T 100 5' stroke='%23E84A38' stroke-width='1.8' fill='none' stroke-linecap='round'/></svg>");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  /* Code-style comment */
+  .comment {
+    color: var(--ink-light);
+    font-weight: 400;
+  }
+  .comment::before {
+    content: '// ';
+    opacity: 0.6;
+  }
+
+  .prompt::before {
+    content: '$ ';
+    color: var(--highlight);
+    font-weight: 600;
+  }
+
+  /* ═══════ MASTHEAD ═══════ */
+
+  .masthead {
+    padding: 18px 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper-edge);
+    border-bottom: 1px solid var(--desk-edge);
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .masthead-left, .masthead-right { display: flex; gap: 28px; align-items: center; }
+
+  .masthead-logo {
+    color: var(--highlight);
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
+  .masthead-dot { color: var(--pen); margin: 0 6px; font-size: 14px; }
+
+  /* ═══════ HERO ═══════ */
+
+  .hero {
+    padding: 80px 6vw 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    font-weight: 600;
+    margin-bottom: 40px;
+    animation: slideIn 0.8s 0.2s both;
+  }
+
+  .hero-eyebrow::before {
+    content: '▸';
+    margin-right: 12px;
+    color: var(--pen);
+  }
+
+  .hero-title {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: clamp(44px, 7.5vw, 116px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    color: var(--paper);
+    margin-bottom: 44px;
+    animation: fadeUp 1s 0.3s both;
+  }
+
+  .hero-title .accent {
+    color: var(--highlight);
+    font-weight: 700;
+  }
+
+  .hero-title .scribbled {
+    display: inline-block;
+    position: relative;
+  }
+  .hero-title .scribbled::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    right: -8px;
+    bottom: 4px;
+    height: 10px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M 2 8 Q 30 2, 55 8 T 110 8 T 165 8 T 198 8' stroke='%23E84A38' stroke-width='3' fill='none' stroke-linecap='round' opacity='0.95'/></svg>");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .hero-sub {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: end;
+    margin-top: 48px;
+    animation: fadeUp 1s 0.5s both;
+  }
+
+  .hero-date {
+    font-family: var(--mono-primary);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--paper);
+    line-height: 1.5;
+  }
+
+  .hero-date .big {
+    display: block;
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .hero-date .meta {
+    color: var(--paper-shadow);
+    font-size: 13px;
+  }
+
+  .hero-lede {
+    font-family: var(--mono-primary);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--paper-shadow);
+    padding-top: 20px;
+    border-top: 1px solid var(--desk-edge);
+  }
+
+  .hero-lede b { color: var(--paper); font-weight: 600; }
+
+  /* ═══════ SECTIONS ═══════ */
+
+  .section {
+    padding: 100px 6vw;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--desk-edge);
+  }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+
+  .section-roman {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--pen);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .section-kicker {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--highlight);
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: var(--mono-accent);
+    font-weight: 600;
+    font-size: clamp(30px, 4.2vw, 58px);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+    color: var(--paper);
+    max-width: 1100px;
+  }
+
+  .section-title .accent { color: var(--highlight); }
+
+  /* ═══════ CURRICULUM ═══════ */
+
+  .curriculum {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .paper-card {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 32px 28px 36px;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    box-shadow:
+      0 6px 0 var(--paper-edge),
+      0 14px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .paper-card.tilt-l { transform: rotate(-1deg); }
+  .paper-card.tilt-r { transform: rotate(0.7deg); }
+
+  .paper-card:hover {
+    transform: translateY(-6px) rotate(0) !important;
+    box-shadow:
+      0 12px 0 var(--paper-edge),
+      0 22px 50px rgba(0, 0, 0, 0.55),
+      0 0 60px rgba(244, 195, 82, 0.12);
+  }
+
+  .card-stamp {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    text-transform: uppercase;
+    transform: rotate(8deg);
+    background: var(--paper-bright);
+  }
+
+  .card-stamp.active { border-color: var(--pen); color: var(--pen); }
+  .card-stamp.future { border-color: var(--ink-light); color: var(--ink-light); border-style: dashed; }
+
+  .card-meta {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+
+  .card-desc {
+    font-family: var(--mono-primary);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+  }
+
+  .card-footer {
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding-top: 16px;
+    border-top: 1px dashed var(--paper-edge);
+    font-weight: 500;
+  }
+
+  /* ═══════ DISPATCH ═══════ */
+
+  .dispatch {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .dispatch-meta {
+    position: sticky;
+    top: 30px;
+    background: var(--desk-soft);
+    padding: 36px 32px;
+    border: 1px solid var(--desk-edge);
+    position: relative;
+  }
+
+  .dispatch-meta::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 2px;
+    background: var(--highlight);
+  }
+
+  .dispatch-label {
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 14px;
+  }
+
+  .dispatch-date-big {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+
+  .dispatch-place {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper-edge);
+    margin-bottom: 28px;
+  }
+
+  .dispatch-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+
+  .dtag {
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--desk-light);
+    color: var(--paper-shadow);
+    border: 1px solid var(--desk-edge);
+  }
+
+  .dispatch-quote {
+    font-family: var(--mono-primary);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--paper);
+    padding-left: 16px;
+    border-left: 3px solid var(--pen);
+  }
+
+  /* Q&A on paper */
+  .qa {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 40px 36px 36px;
+    margin-bottom: 36px;
+    position: relative;
+    box-shadow:
+      0 6px 0 var(--paper-edge),
+      0 16px 40px rgba(0, 0, 0, 0.5);
+    transform: rotate(-0.2deg);
+  }
+  .qa:nth-child(2) { transform: rotate(0.3deg); }
+  .qa:nth-child(3) { transform: rotate(-0.4deg); }
+
+  .qa-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .qa-num {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--pen);
+    letter-spacing: -0.04em;
+  }
+
+  .qa-label {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .qa-question {
+    font-family: var(--mono-accent);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.015em;
+    max-width: 720px;
+  }
+
+  .qa-question .accent { color: var(--pen); font-weight: 600; }
+
+  .qa-flow {
+    display: grid;
+    grid-template-columns: 1fr 44px 1fr;
+    gap: 14px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .flow-card {
+    padding: 20px 22px;
+    position: relative;
+  }
+
+  .flow-attempt {
+    background: var(--paper-bright);
+    border: 1px solid var(--paper-edge);
+    border-left: 3px solid var(--ink-light);
+    position: relative;
+  }
+
+  .flow-attempt::before {
+    content: '✗';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 28px;
+    height: 28px;
+    background: var(--pen);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono-primary);
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .flow-final {
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+  }
+
+  .flow-final::before {
+    content: '✓';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 28px;
+    height: 28px;
+    background: var(--highlight);
+    color: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono-primary);
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .flow-label {
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.75;
+  }
+
+  .flow-text {
+    font-family: var(--mono-primary);
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  .flow-final .flow-text { font-weight: 500; color: var(--paper); }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono-accent);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--pen);
+  }
+
+  .qa-takeaways {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--paper-edge);
+    margin-top: 8px;
+  }
+
+  .takeaway {
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    color: var(--ink);
+  }
+  .takeaway.hi { background: var(--highlight); }
+  .takeaway.pen { border: 1.5px solid var(--pen); color: var(--pen); }
+
+  /* ═══════ LEDGER ═══════ */
+
+  .ledger-wrap {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 52px 44px;
+    box-shadow:
+      0 8px 0 var(--paper-edge),
+      0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  .ledger-wrap::before {
+    content: 'CONFIDENTIAL';
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--pen);
+    border: 1.5px solid var(--pen);
+    padding: 4px 12px;
+    transform: rotate(4deg);
+  }
+
+  .ledger {
+    columns: 2;
+    column-gap: 48px;
+    margin-top: 16px;
+  }
+
+  .mistake {
+    break-inside: avoid;
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--paper-edge);
+  }
+
+  .mistake-rank {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--pen);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .mistake-name {
+    font-family: var(--mono-accent);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .mistake-ex {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .mistake-ex .wrong {
+    color: var(--pen);
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    font-weight: 500;
+  }
+  .mistake-ex .right {
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--highlight);
+    padding: 1px 5px;
+  }
+
+  .mistake-count {
+    font-family: var(--mono-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+    white-space: nowrap;
+  }
+  .mistake-count.hi { background: var(--pen); color: var(--paper); border-color: var(--pen); }
+  .mistake-count.med { background: var(--highlight); border-color: var(--ink); }
+
+  /* ═══════ PATTERNS ═══════ */
+
+  .patterns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .pattern {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 32px 28px;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease;
+    box-shadow:
+      0 6px 0 var(--paper-edge),
+      0 16px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .pattern:nth-child(1) { transform: rotate(-1.2deg); }
+  .pattern:nth-child(2) { transform: rotate(0.8deg); }
+  .pattern:nth-child(3) { transform: rotate(-0.5deg); }
+
+  .pattern:hover {
+    transform: translateY(-10px) rotate(0) !important;
+    box-shadow:
+      0 14px 0 var(--pen),
+      0 26px 60px rgba(0, 0, 0, 0.55),
+      0 0 80px rgba(244, 195, 82, 0.15);
+  }
+
+  .pattern-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .pattern-num {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--pen);
+    letter-spacing: -0.02em;
+  }
+
+  .pattern-chip {
+    font-family: var(--mono-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 8px;
+  }
+
+  .pattern-title {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .pattern-zh {
+    font-family: var(--mono-primary);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .pattern-rule {
+    font-family: var(--mono-primary);
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .pattern-rule b { color: var(--highlight); font-weight: 700; }
+
+  .pattern-ex {
+    font-family: var(--mono-primary);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  .pattern-ex > div { margin-bottom: 2px; }
+  .pattern-ex .hl {
+    background: var(--highlight);
+    color: var(--ink);
+    padding: 1px 4px;
+    font-weight: 600;
+  }
+
+  /* ═══════ MANIFESTO ═══════ */
+
+  .manifesto {
+    padding: 130px 6vw;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--desk-edge);
+    overflow: hidden;
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20vw;
+    transform: translateY(-50%);
+    width: 120vw;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(232, 74, 56, 0.08) 0%, transparent 45%);
+    pointer-events: none;
+  }
+
+  .manifesto-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+  }
+
+  .manifesto-label {
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 40px;
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--highlight);
+  }
+
+  .manifesto-text {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: clamp(28px, 4.4vw, 68px);
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+    color: var(--paper);
+  }
+
+  .manifesto-text .accent { color: var(--highlight); }
+
+  .manifesto-text .scribble-under {
+    position: relative;
+    display: inline-block;
+  }
+  .manifesto-text .scribble-under::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    bottom: -2px;
+    height: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'><path d='M 2 10 Q 30 2, 55 10 T 110 10 T 165 10 T 198 10' stroke='%23E84A38' stroke-width='3.5' fill='none' stroke-linecap='round'/></svg>");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .manifesto-goals {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+    padding-top: 50px;
+    border-top: 1px solid var(--desk-edge);
+  }
+
+  .goal {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+
+  .goal-num {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 0.85;
+    color: var(--pen);
+    letter-spacing: -0.05em;
+  }
+
+  .goal-body h3 {
+    font-family: var(--mono-accent);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--paper);
+    letter-spacing: -0.02em;
+  }
+
+  .goal-body h3 .accent { color: var(--highlight); }
+
+  .goal-body p {
+    font-family: var(--mono-primary);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--paper-shadow);
+  }
+
+  /* ═══════ COLOPHON ═══════ */
+
+  .colophon {
+    padding: 50px 6vw;
+    border-top: 1px solid var(--desk-edge);
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+    font-family: var(--mono-primary);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--paper-edge);
+  }
+
+  .colophon-right { text-align: right; }
+
+  .colophon-mark {
+    font-family: var(--mono-accent);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--highlight);
+    white-space: nowrap;
+  }
+
+  /* ═══════ SCROLL REVEAL ═══════ */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1), transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ═══════ RESPONSIVE ═══════ */
+
+  @media (max-width: 960px) {
+    .masthead { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .hero-sub { grid-template-columns: 1fr; gap: 32px; }
+    .curriculum { grid-template-columns: 1fr; }
+    .dispatch { grid-template-columns: 1fr; gap: 40px; }
+    .dispatch-meta { position: static; }
+    .qa-flow { grid-template-columns: 1fr; }
+    .flow-arrow { transform: rotate(90deg); padding: 12px 0; }
+    .ledger { columns: 1; column-gap: 0; }
+    .patterns { grid-template-columns: 1fr; }
+    .manifesto-goals { grid-template-columns: 1fr; gap: 32px; }
+    .section { padding: 72px 6vw; }
+    .colophon { grid-template-columns: 1fr; text-align: center; }
+    .colophon-right { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ═══════ MASTHEAD ═══════ -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <span><span class="masthead-logo">./engineering-logbook</span><span class="masthead-dot">●</span>Archive</span>
+      <span>Folio 01</span>
+    </div>
+    <div class="masthead-right">
+      <span>Entry 001</span>
+      <span>Spring 2026</span>
+      <span>User: yu-mark</span>
+    </div>
+  </header>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-eyebrow">// a night shift at the language desk</div>
+    <h1 class="hero-title">
+      Field <span class="accent">Notes</span><br>
+      on <span class="scribbled">Fluency</span><span class="cursor"></span>
+    </h1>
+    <div class="hero-sub">
+      <div class="hero-date">
+        <span class="big">2026-04-19</span>
+        <span class="meta">Sunday · Banqiao, Taipei · 23:47 local</span>
+      </div>
+      <p class="hero-lede">
+        A working archive of a software engineer's late-night English practice with <b>Kiddy</b>. Every entry catalogued with the same rigor as a <span class="highlighted">code review</span> — annotated, reviewed, corrected, and committed for the morning after.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ CURRICULUM ═══════ -->
+  <section class="section reveal">
+    <div class="section-head">
+      <span class="section-roman">01</span>
+      <span class="section-kicker">Curriculum · 課程進度</span>
+    </div>
+    <h2 class="section-title">The syllabus, as it stands <span class="accent">tonight.</span></h2>
+
+    <div class="curriculum">
+      <article class="paper-card tilt-l">
+        <span class="card-stamp">Archived</span>
+        <div class="card-meta">Unit 01</div>
+        <h3 class="card-title"><span class="highlighted">Self</span><br>Introduction</h3>
+        <p class="card-desc">The foundations — presenting who you are, what you build, where you're headed. Practiced with care: "I specialize in…", "My goal is to…".</p>
+        <div class="card-footer">Completed · filed under unit-01/</div>
+      </article>
+
+      <article class="paper-card active tilt-r">
+        <span class="card-stamp active">Current</span>
+        <div class="card-meta">Unit 02</div>
+        <h3 class="card-title"><span class="highlighted">Daily</span> Routine<br>& Weekends</h3>
+        <p class="card-desc">The hybrid workday, the commute, the art of unwinding. The vocabulary of a modern engineer's week — with its rituals and rhythms.</p>
+        <div class="card-footer">In Progress · Q1–Q3 completed 19.04</div>
+      </article>
+
+      <article class="paper-card tilt-l">
+        <span class="card-stamp future">Pending</span>
+        <div class="card-meta">Unit 03</div>
+        <h3 class="card-title">To be<br>announced</h3>
+        <p class="card-desc">Awaiting Kiddy's next syllabus. A fresh vocabulary, new role-plays, another set of patient corrections to pencil in.</p>
+        <div class="card-footer">Pending · awaiting materials</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════ DISPATCH ═══════ -->
+  <section class="section reveal">
+    <div class="section-head">
+      <span class="section-roman">02</span>
+      <span class="section-kicker">Dispatch 001 · field report</span>
+    </div>
+    <h2 class="section-title">Three questions. <span class="accent">Six iterations.</span><br>One polished sentence apiece.</h2>
+
+    <div class="dispatch">
+      <aside class="dispatch-meta">
+        <div class="dispatch-label">▸ Session Log</div>
+        <div class="dispatch-date-big">19.04.26</div>
+        <div class="dispatch-place">Banqiao · 23:47 local</div>
+        <div class="dispatch-tags">
+          <span class="dtag">Unit 2</span>
+          <span class="dtag">Speaking</span>
+          <span class="dtag">Hint-Led</span>
+          <span class="dtag">Self-Correction</span>
+        </div>
+        <p class="dispatch-quote">
+          "接受 hints 並自己修正 —<br>這是最有效的學習方式。"
+        </p>
+      </aside>
+
+      <div>
+        <!-- Q1 -->
+        <article class="qa">
+          <div class="qa-header">
+            <span class="qa-num">01</span>
+            <span class="qa-label">Question · On the shape of the day</span>
+          </div>
+          <p class="qa-question">How's your schedule today? <span class="accent">Are you busy or relaxing?</span></p>
+          <div class="qa-flow">
+            <div class="flow-card flow-attempt">
+              <div class="flow-label">first attempt · 3 errors</div>
+              <p class="flow-text">"My today schedule is take my kids go to school, and then go to office do work, easy say is busy."</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-card flow-final">
+              <div class="flow-label">polished · iter 05</div>
+              <p class="flow-text">"Today, I take my kids to school, then go to the office to work, so basically I'm busy."</p>
+            </div>
+          </div>
+          <div class="qa-takeaways">
+            <span class="takeaway hi">Word order</span>
+            <span class="takeaway hi">Article · "the"</span>
+            <span class="takeaway pen">Preposition · "to"</span>
+            <span class="takeaway pen">Comma splice → "so"</span>
+            <span class="takeaway hi">"do work" → "work"</span>
+          </div>
+        </article>
+
+        <!-- Q2 -->
+        <article class="qa">
+          <div class="qa-header">
+            <span class="qa-num">02</span>
+            <span class="qa-label">Question · On the rhythm of remote work</span>
+          </div>
+          <p class="qa-question">How often do you work remotely, <span class="accent">and when do you go into the office?</span></p>
+          <div class="qa-flow">
+            <div class="flow-card flow-attempt">
+              <div class="flow-label">first attempt · 2 errors</div>
+              <p class="flow-text">"I work remotely four days in weekend, and I go into the office at Friday."</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-card flow-final">
+              <div class="flow-label">polished · iter 04</div>
+              <p class="flow-text">"I work remotely four times a week, and I go into the office on Friday."</p>
+            </div>
+          </div>
+          <div class="qa-takeaways">
+            <span class="takeaway hi">N times <b>a</b> week</span>
+            <span class="takeaway pen">ON Friday (not AT)</span>
+            <span class="takeaway hi">at · on · in rules</span>
+          </div>
+        </article>
+
+        <!-- Q3 -->
+        <article class="qa">
+          <div class="qa-header">
+            <span class="qa-num">03</span>
+            <span class="qa-label">Question · On evening rituals</span>
+          </div>
+          <p class="qa-question">When do you disconnect from work? <span class="accent">And how do you unwind?</span></p>
+          <div class="qa-flow">
+            <div class="flow-card flow-attempt">
+              <div class="flow-label">first attempt · 4 errors</div>
+              <p class="flow-text">"I'm after work at 6 PM. I unwind just like watch Netflix and play badminton or singing."</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-card flow-final">
+              <div class="flow-label">polished · iter 06</div>
+              <p class="flow-text">"I disconnect from work at 6 PM. I unwind by watching Netflix, playing badminton, or singing."</p>
+            </div>
+          </div>
+          <div class="qa-takeaways">
+            <span class="takeaway hi">by + V-ing</span>
+            <span class="takeaway pen">Parallel structure</span>
+            <span class="takeaway hi">List punctuation</span>
+            <span class="takeaway pen">Oxford comma</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ LEDGER ═══════ -->
+  <section class="section reveal">
+    <div class="section-head">
+      <span class="section-roman">03</span>
+      <span class="section-kicker">The Ledger · 常犯錯誤排行榜</span>
+    </div>
+    <h2 class="section-title">Recurring <span class="accent">errors,</span><br>catalogued without apology.</h2>
+
+    <div class="ledger-wrap">
+      <div class="ledger">
+        <div class="mistake">
+          <span class="mistake-rank">01</span>
+          <div>
+            <div class="mistake-name">Article omission · 冠詞省略</div>
+            <div class="mistake-ex"><span class="wrong">I am software engineer</span> → <span class="right">I am a software engineer</span></div>
+          </div>
+          <span class="mistake-count hi">High</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">02</span>
+          <div>
+            <div class="mistake-name">Subject omission · 主詞省略</div>
+            <div class="mistake-ex"><span class="wrong">easy say is busy</span> → <span class="right">I'm busy</span></div>
+          </div>
+          <span class="mistake-count hi">High</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">03</span>
+          <div>
+            <div class="mistake-name">Preposition of time</div>
+            <div class="mistake-ex"><span class="wrong">at Friday</span> → <span class="right">on Friday</span></div>
+          </div>
+          <span class="mistake-count hi">High</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">04</span>
+          <div>
+            <div class="mistake-name">Chinese → English translation</div>
+            <div class="mistake-ex"><span class="wrong">easy say</span> → <span class="right">basically</span></div>
+          </div>
+          <span class="mistake-count hi">High</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">05</span>
+          <div>
+            <div class="mistake-name">"take" + redundant "go"</div>
+            <div class="mistake-ex"><span class="wrong">take kids go to school</span> → <span class="right">take kids to school</span></div>
+          </div>
+          <span class="mistake-count med">Med</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">06</span>
+          <div>
+            <div class="mistake-name">Redundant "do work"</div>
+            <div class="mistake-ex"><span class="wrong">to do work</span> → <span class="right">to work</span></div>
+          </div>
+          <span class="mistake-count med">Med</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">07</span>
+          <div>
+            <div class="mistake-name">Frequency · N times a week</div>
+            <div class="mistake-ex"><span class="wrong">four times in week</span> → <span class="right">four times a week</span></div>
+          </div>
+          <span class="mistake-count med">Med</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">08</span>
+          <div>
+            <div class="mistake-name">"by" + V-ing</div>
+            <div class="mistake-ex"><span class="wrong">by watch Netflix</span> → <span class="right">by watching Netflix</span></div>
+          </div>
+          <span class="mistake-count med">Med</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">09</span>
+          <div>
+            <div class="mistake-name">List punctuation · Oxford comma</div>
+            <div class="mistake-ex"><span class="wrong">A, B and C</span> → <span class="right">A, B, and C</span></div>
+          </div>
+          <span class="mistake-count med">Med</span>
+        </div>
+        <div class="mistake">
+          <span class="mistake-rank">10</span>
+          <div>
+            <div class="mistake-name">Comma splice</div>
+            <div class="mistake-ex"><span class="wrong">…work, basically I'm busy</span> → <span class="right">…work, so basically…</span></div>
+          </div>
+          <span class="mistake-count med">Med</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PATTERNS ═══════ -->
+  <section class="section reveal">
+    <div class="section-head">
+      <span class="section-roman">04</span>
+      <span class="section-kicker">Pattern library · 文法範式</span>
+    </div>
+    <h2 class="section-title">Three patterns,<br><span class="accent">committed</span> to muscle memory.</h2>
+
+    <div class="patterns">
+      <article class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">01.</span>
+          <span class="pattern-chip">Prepositions</span>
+        </div>
+        <h3 class="pattern-title">Time, by three words.</h3>
+        <p class="pattern-zh">時間介系詞 · at · on · in</p>
+        <div class="pattern-rule"><b>AT</b> → clock time<br><b>ON</b> → day, date<br><b>IN</b> → month, year, season</div>
+        <div class="pattern-ex">
+          <div><span class="hl">at</span> 7 AM · <span class="hl">at</span> noon</div>
+          <div><span class="hl">on</span> Friday · <span class="hl">on</span> April 5th</div>
+          <div><span class="hl">in</span> 2026 · <span class="hl">in</span> summer</div>
+        </div>
+      </article>
+
+      <article class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">02.</span>
+          <span class="pattern-chip">Frequency</span>
+        </div>
+        <h3 class="pattern-title">How often, counted aloud.</h3>
+        <p class="pattern-zh">頻率表達 · N times a 週期</p>
+        <div class="pattern-rule">Number + times + <b>a</b> + unit<br>Use "<b>a</b>" — never "in"!</div>
+        <div class="pattern-ex">
+          <div>once <span class="hl">a</span> day</div>
+          <div>twice <span class="hl">a</span> week</div>
+          <div>four times <span class="hl">a</span> week</div>
+          <div>three times <span class="hl">a</span> month</div>
+        </div>
+      </article>
+
+      <article class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">03.</span>
+          <span class="pattern-chip">By + V-ing</span>
+        </div>
+        <h3 class="pattern-title">Method, in motion.</h3>
+        <p class="pattern-zh">動名詞表方法 · 用某方式做某事</p>
+        <div class="pattern-rule">After "by" → always V-<b>ing</b><br>All items in list must match</div>
+        <div class="pattern-ex">
+          <div>I relax <span class="hl">by reading</span>.</div>
+          <div>I unwind <span class="hl">by watching</span> Netflix,</div>
+          <div><span class="hl">playing</span> badminton, or</div>
+          <div><span class="hl">singing</span>.</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════ MANIFESTO ═══════ -->
+  <section class="manifesto reveal">
+    <div class="manifesto-inner">
+      <div class="manifesto-label">▸ The Manifesto · 宣言</div>
+      <h2 class="manifesto-text">
+        To <span class="accent">communicate</span> in English<br>
+        <span class="scribble-under">fluently.</span> To lead a team.<br>
+        To become a <span class="accent">Staff Engineer.</span>
+      </h2>
+
+      <div class="manifesto-goals">
+        <div class="goal">
+          <div class="goal-num">01</div>
+          <div class="goal-body">
+            <h3>English <span class="accent">Proficiency</span></h3>
+            <p>Weekly practice with Kiddy. Drill grammar, vocabulary, and role-play. Record progress. Own every mistake — but do not repeat it.</p>
+          </div>
+        </div>
+        <div class="goal">
+          <div class="goal-num">02</div>
+          <div class="goal-body">
+            <h3>Staff Engineer <span class="accent">Promotion</span></h3>
+            <p>Build depth in backend and cloud systems. Mentor others. Lead cross-team initiatives. Communicate technical ideas with clarity — in any language.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ COLOPHON ═══════ -->
+  <footer class="colophon">
+    <div>Set in JetBrains Mono & IBM Plex Mono</div>
+    <div class="colophon-mark">— continued, patiently, by lamp light. —</div>
+    <div class="colophon-right">Taipei · 2026</div>
+  </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

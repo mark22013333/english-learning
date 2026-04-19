@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fluency Dispatch — Yu Mark's English Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F2ECDE;
+    --cream-deep: #E8DFC9;
+    --cream-light: #F8F3E8;
+    --ink: #1A1A1A;
+    --ink-soft: #2A2826;
+    --oxblood: #7A2E2A;
+    --oxblood-deep: #5A1F1C;
+    --ochre: #C89B3C;
+    --ochre-soft: #E8D296;
+    --sage: #6A7461;
+    --warm-gray: #C4BCA9;
+    --warm-gray-soft: #DDD4C0;
+    --shadow-soft: rgba(26, 26, 26, 0.08);
+    --shadow-deep: rgba(26, 26, 26, 0.18);
+    --display: "Fraunces", "Times New Roman", serif;
+    --body: "Instrument Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 16px;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Paper grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: multiply;
+  }
+
+  /* Animations */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expand {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+  /* ═══════════════════════════════════════════════ */
+  /* MASTHEAD                                        */
+  /* ═══════════════════════════════════════════════ */
+
+  .masthead {
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 6vw 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: fade 1.2s ease both;
+  }
+
+  .masthead-left, .masthead-right {
+    display: flex;
+    gap: 24px;
+  }
+
+  .masthead-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--oxblood);
+    margin: 0 6px;
+    transform: translateY(-1px);
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* HERO                                            */
+  /* ═══════════════════════════════════════════════ */
+
+  .hero {
+    padding: 60px 6vw 80px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: end;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 32px;
+    animation: rise 0.8s 0.1s both;
+  }
+
+  .hero-eyebrow::before {
+    content: '§';
+    font-family: var(--display);
+    font-style: italic;
+    margin-right: 10px;
+    color: var(--ochre);
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 350;
+    font-size: clamp(64px, 10vw, 156px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+    animation: rise 1s 0.2s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--oxblood);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+
+  .hero-lede {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 280px;
+    padding-bottom: 12px;
+    border-top: 1px solid var(--warm-gray);
+    padding-top: 20px;
+    animation: rise 1s 0.4s both;
+  }
+
+  .hero-lede strong {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--oxblood);
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* STATS STRIP                                     */
+  /* ═══════════════════════════════════════════════ */
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--ink);
+    background: var(--cream-deep);
+  }
+
+  .stat {
+    padding: 32px 28px;
+    border-right: 1px solid var(--warm-gray);
+    animation: rise 0.8s both;
+    position: relative;
+  }
+  .stat:nth-child(1) { animation-delay: 0.5s; }
+  .stat:nth-child(2) { animation-delay: 0.6s; }
+  .stat:nth-child(3) { animation-delay: 0.7s; }
+  .stat:nth-child(4) { animation-delay: 0.8s; border-right: none; }
+
+  .stat-num {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: 72px;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144, "SOFT" 20;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .stat-num .unit {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--oxblood);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .stat-label {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* SECTION HEADERS                                 */
+  /* ═══════════════════════════════════════════════ */
+
+  .section {
+    padding: 100px 6vw;
+    border-bottom: 1px solid var(--warm-gray);
+    position: relative;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--oxblood);
+    padding: 4px 10px;
+    border: 1px solid var(--oxblood);
+    border-radius: 2px;
+  }
+
+  .section-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    flex: 1;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 96, "SOFT" 30;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--oxblood);
+    font-weight: 300;
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* PROGRESS TIMELINE                               */
+  /* ═══════════════════════════════════════════════ */
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--ink) 0, var(--ink) 4px, transparent 4px, transparent 10px);
+    z-index: 0;
+  }
+
+  .unit-card {
+    background: var(--cream-light);
+    border: 1px solid var(--ink);
+    padding: 28px 28px 32px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .unit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .unit-card.done { background: var(--cream-light); }
+  .unit-card.active { background: var(--ochre-soft); border-color: var(--oxblood); }
+  .unit-card.future { background: var(--cream); border-style: dashed; opacity: 0.55; }
+
+  .unit-dot {
+    position: absolute;
+    top: 30px;
+    left: -12px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 4px solid var(--cream);
+    z-index: 2;
+  }
+  .unit-card.done .unit-dot { background: var(--ink); }
+  .unit-card.active .unit-dot { background: var(--oxblood); box-shadow: 0 0 0 4px var(--cream), 0 0 0 6px var(--oxblood); }
+  .unit-card.future .unit-dot { background: var(--warm-gray); border-style: dashed; }
+
+  .unit-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 16px;
+  }
+
+  .unit-name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 48, "SOFT" 30;
+  }
+
+  .unit-name em { font-style: italic; color: var(--oxblood); }
+
+  .unit-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .unit-status {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    display: inline-block;
+  }
+  .unit-card.done .unit-status { background: var(--ink); color: var(--cream); }
+  .unit-card.active .unit-status { background: var(--oxblood); color: var(--cream); }
+  .unit-card.future .unit-status { background: var(--warm-gray); color: var(--ink-soft); }
+
+  /* ═══════════════════════════════════════════════ */
+  /* SESSION SPOTLIGHT                               */
+  /* ═══════════════════════════════════════════════ */
+
+  .session {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 64px;
+  }
+
+  .session-aside {
+    border-top: 3px solid var(--ink);
+    padding-top: 20px;
+    position: sticky;
+    top: 40px;
+    height: fit-content;
+  }
+
+  .session-aside-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 12px;
+  }
+
+  .session-date {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: var(--oxblood);
+  }
+
+  .session-day {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+
+  .session-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: var(--cream-light);
+    border: 1px solid var(--warm-gray);
+    color: var(--ink-soft);
+  }
+
+  .session-quote {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.35;
+    color: var(--ink);
+    padding-left: 20px;
+    border-left: 3px solid var(--ochre);
+    font-variation-settings: "opsz" 48, "SOFT" 80;
+  }
+
+  .qa {
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  .qa:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .qa-num {
+    font-family: var(--display);
+    font-weight: 200;
+    font-size: 120px;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    color: var(--oxblood);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .qa-question {
+    font-family: var(--display);
+    font-weight: 450;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+    max-width: 680px;
+    font-variation-settings: "opsz" 48, "SOFT" 40;
+  }
+
+  .qa-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .flow-box {
+    padding: 24px;
+    border: 1px solid var(--warm-gray);
+  }
+
+  .flow-attempt {
+    background: var(--cream-light);
+    border-left: 3px solid var(--warm-gray);
+  }
+
+  .flow-final {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .flow-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .flow-text {
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings: "opsz" 24, "SOFT" 60;
+  }
+
+  .flow-final .flow-text { color: var(--cream); font-style: normal; font-weight: 400; }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--oxblood);
+    font-size: 24px;
+    font-family: var(--display);
+  }
+
+  .qa-takeaways {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .takeaway {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    background: var(--ochre-soft);
+    border-radius: 2px;
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* MISTAKES LEDGER                                 */
+  /* ═══════════════════════════════════════════════ */
+
+  .mistakes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 48px;
+  }
+
+  .mistake {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 20px;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px dotted var(--warm-gray);
+  }
+
+  .mistake-rank {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--oxblood);
+    font-variation-settings: "opsz" 48, "SOFT" 100;
+    font-style: italic;
+  }
+
+  .mistake-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .mistake-name {
+    font-family: var(--display);
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 1.2;
+    font-variation-settings: "opsz" 24;
+  }
+
+  .mistake-example {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .mistake-example .wrong { color: var(--oxblood); text-decoration: line-through; }
+  .mistake-example .right { color: var(--sage); font-weight: 600; }
+
+  .mistake-count {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    background: var(--ochre-soft);
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* GRAMMAR PATTERNS                                */
+  /* ═══════════════════════════════════════════════ */
+
+  .patterns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pattern {
+    background: var(--cream-light);
+    border: 1px solid var(--ink);
+    padding: 32px 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 340px;
+    transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .pattern:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: 10px 10px 0 var(--oxblood);
+  }
+
+  .pattern:nth-child(2):hover { transform: translateY(-6px) rotate(0.5deg); }
+
+  .pattern-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--oxblood);
+    margin-bottom: 32px;
+  }
+
+  .pattern-title {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 48, "SOFT" 40;
+  }
+
+  .pattern-title em { font-style: italic; color: var(--oxblood); }
+
+  .pattern-chinese {
+    font-family: var(--display);
+    font-size: 14px;
+    color: var(--sage);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .pattern-rule {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  .pattern-examples {
+    margin-top: auto;
+    font-family: var(--display);
+    font-size: 14px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .pattern-examples div { margin-bottom: 4px; }
+  .pattern-examples .hi { color: var(--oxblood); font-weight: 500; }
+
+  /* ═══════════════════════════════════════════════ */
+  /* MANIFESTO                                       */
+  /* ═══════════════════════════════════════════════ */
+
+  .manifesto {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 120px 6vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--oxblood-deep) 0%, transparent 70%);
+    opacity: 0.6;
+  }
+
+  .manifesto-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+  }
+
+  .manifesto-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 40px;
+  }
+
+  .manifesto-label::before {
+    content: '——';
+    margin-right: 12px;
+    color: var(--ochre);
+  }
+
+  .manifesto-text {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(36px, 5.2vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 200;
+  }
+
+  .manifesto-text .underline {
+    background: linear-gradient(transparent 70%, var(--oxblood) 70%, var(--oxblood) 92%, transparent 92%);
+    padding: 0 4px;
+  }
+
+  .manifesto-goals {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(242, 236, 222, 0.2);
+  }
+
+  .goal {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .goal-num {
+    font-family: var(--display);
+    font-weight: 200;
+    font-size: 72px;
+    line-height: 0.85;
+    color: var(--ochre);
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+  }
+
+  .goal-body h3 {
+    font-family: var(--display);
+    font-weight: 450;
+    font-size: 22px;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .goal-body p {
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: 1.55;
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* COLOPHON                                        */
+  /* ═══════════════════════════════════════════════ */
+
+  .colophon {
+    padding: 48px 6vw;
+    border-top: 1px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+  }
+
+  .colophon-center {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--oxblood);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ═══════════════════════════════════════════════ */
+  /* RESPONSIVE                                      */
+  /* ═══════════════════════════════════════════════ */
+
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; gap: 24px; padding: 40px 6vw 60px; }
+    .hero-lede { max-width: 100%; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(odd) { border-right: 1px solid var(--warm-gray); }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--warm-gray); }
+    .timeline { grid-template-columns: 1fr; }
+    .timeline::before { display: none; }
+    .session { grid-template-columns: 1fr; }
+    .session-aside { position: static; }
+    .qa-flow { grid-template-columns: 1fr; }
+    .flow-arrow { transform: rotate(90deg); padding: 8px 0; }
+    .mistakes { grid-template-columns: 1fr; }
+    .patterns { grid-template-columns: 1fr; }
+    .manifesto-goals { grid-template-columns: 1fr; gap: 32px; }
+    .section { padding: 72px 6vw; }
+    .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+
+  /* Scroll reveal trigger */
+  .scroll-reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+  <!-- ═══════ MASTHEAD ═══════ -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <span>The Fluency Dispatch<span class="masthead-dot"></span>Vol. I</span>
+      <span>No. 001</span>
+    </div>
+    <div class="masthead-right">
+      <span>Spring 2026</span>
+      <span>Bilingual · 雙語</span>
+      <span>For: Yu Mark</span>
+    </div>
+  </header>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow">A Field Journal · 學習日誌 · Sunday, 19 April 2026</div>
+      <h1 class="hero-title">The<br>Journey<br>to <em>Fluency.</em></h1>
+    </div>
+    <p class="hero-lede">
+      A working chronicle of a software engineer's ascent toward English mastery, <strong>in collaboration with Kiddy</strong>, compiled over lessons, mistakes, and small victories.
+    </p>
+  </section>
+
+  <!-- ═══════ STATS ═══════ -->
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-num">01<span class="unit">/2</span></div>
+      <div class="stat-label">Units<br>Completed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">03<span class="unit">Q's</span></div>
+      <div class="stat-label">Questions<br>Conquered Today</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15<span class="unit">Total</span></div>
+      <div class="stat-label">Mistakes<br>Catalogued</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">06<span class="unit">Rules</span></div>
+      <div class="stat-label">Grammar Patterns<br>Mastered</div>
+    </div>
+  </section>
+
+  <!-- ═══════ CURRICULUM ═══════ -->
+  <section class="section scroll-reveal">
+    <div class="section-header">
+      <span class="section-num">I.</span>
+      <span class="section-kicker">THE CURRICULUM — 課程進度</span>
+    </div>
+    <h2 class="section-title">A curriculum <em>in motion.</em></h2>
+
+    <div class="timeline">
+      <div class="unit-card done">
+        <div class="unit-dot"></div>
+        <div class="unit-meta">Unit 01 · Completed</div>
+        <div class="unit-name"><em>Self</em><br>Introduction</div>
+        <div class="unit-desc">Confidence in presenting who you are, what you build, and where you're headed. Mastered essentials like "I specialize in..." and "My goal is to...".</div>
+        <span class="unit-status">✓ Archived</span>
+      </div>
+      <div class="unit-card active">
+        <div class="unit-dot"></div>
+        <div class="unit-meta">Unit 02 · In Progress</div>
+        <div class="unit-name">Daily <em>Routine</em> &<br>Weekends</div>
+        <div class="unit-desc">The hybrid workday, the commute, the art of unwinding. Building the vocabulary of a modern engineer's week — with all its rituals and rhythms.</div>
+        <span class="unit-status">⟳ Current</span>
+      </div>
+      <div class="unit-card future">
+        <div class="unit-dot"></div>
+        <div class="unit-meta">Unit 03 · Coming Next</div>
+        <div class="unit-name"><em>To be</em><br>Announced</div>
+        <div class="unit-desc">Next chapter awaits. Kiddy's syllabus will reveal itself in due course — another set of vocabulary, role-plays, and fresh challenges to conquer.</div>
+        <span class="unit-status">— Pending</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SESSION SPOTLIGHT ═══════ -->
+  <section class="section scroll-reveal" style="background: var(--cream-deep);">
+    <div class="section-header">
+      <span class="section-num">II.</span>
+      <span class="section-kicker">DISPATCH № 001 — A FIELD REPORT</span>
+    </div>
+    <h2 class="section-title">Three questions. <em>Six iterations.</em><br>One perfected sentence.</h2>
+
+    <div class="session">
+      <aside class="session-aside">
+        <div class="session-aside-label">Session Log</div>
+        <div class="session-date">19.04.26</div>
+        <div class="session-day">Sunday · Banqiao, Taipei</div>
+        <div class="session-tags">
+          <span class="tag">Unit 2</span>
+          <span class="tag">Speaking</span>
+          <span class="tag">Hint-Led</span>
+          <span class="tag">Self-Correction</span>
+        </div>
+        <p class="session-quote">
+          "接受 hints 並自己修正 — 這是最有效的學習方式。"
+        </p>
+      </aside>
+
+      <div class="session-body">
+
+        <!-- Q1 -->
+        <div class="qa">
+          <span class="qa-num">01</span>
+          <h3 class="qa-question">How's your schedule today? <em>Are you busy or relaxing?</em></h3>
+          <div class="qa-flow">
+            <div class="flow-box flow-attempt">
+              <div class="flow-label">First Attempt</div>
+              <div class="flow-text">"My today schedule is take my kids go to school, and then go to office do work, easy say is busy."</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box flow-final">
+              <div class="flow-label">Final, Polished</div>
+              <div class="flow-text">"Today, I take my kids to school, then go to the office to work, so basically I'm busy."</div>
+            </div>
+          </div>
+          <div class="qa-takeaways">
+            <span class="takeaway">WORD ORDER</span>
+            <span class="takeaway">ARTICLE · the</span>
+            <span class="takeaway">PREPOSITION · to</span>
+            <span class="takeaway">COMMA SPLICE → so</span>
+            <span class="takeaway">"do work" → "work"</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="qa">
+          <span class="qa-num">02</span>
+          <h3 class="qa-question">How often do you work remotely, <em>and when do you go into the office?</em></h3>
+          <div class="qa-flow">
+            <div class="flow-box flow-attempt">
+              <div class="flow-label">First Attempt</div>
+              <div class="flow-text">"I work remotely four days in weekend, and I go into the office at Friday."</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box flow-final">
+              <div class="flow-label">Final, Polished</div>
+              <div class="flow-text">"I work remotely four times a week, and I go into the office on Friday."</div>
+            </div>
+          </div>
+          <div class="qa-takeaways">
+            <span class="takeaway">N times <strong>a</strong> week</span>
+            <span class="takeaway">ON Friday</span>
+            <span class="takeaway">AT · ON · IN rules</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="qa">
+          <span class="qa-num">03</span>
+          <h3 class="qa-question">When do you disconnect from work? <em>And how do you unwind?</em></h3>
+          <div class="qa-flow">
+            <div class="flow-box flow-attempt">
+              <div class="flow-label">First Attempt</div>
+              <div class="flow-text">"I'm after work at 6 PM. I unwind just like watch Netflix and play badminton or singing."</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box flow-final">
+              <div class="flow-label">Final, Polished</div>
+              <div class="flow-text">"I disconnect from work at 6 PM. I unwind by watching Netflix, playing badminton, or singing."</div>
+            </div>
+          </div>
+          <div class="qa-takeaways">
+            <span class="takeaway">by + V-ing</span>
+            <span class="takeaway">PARALLEL STRUCTURE</span>
+            <span class="takeaway">LIST PUNCTUATION</span>
+            <span class="takeaway">OXFORD COMMA</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MISTAKES LEDGER ═══════ -->
+  <section class="section scroll-reveal">
+    <div class="section-header">
+      <span class="section-num">III.</span>
+      <span class="section-kicker">THE LEDGER — 常犯錯誤排行榜</span>
+    </div>
+    <h2 class="section-title">Recurring <em>errors,</em><br>catalogued with care.</h2>
+
+    <div class="mistakes">
+      <div class="mistake">
+        <div class="mistake-rank">01</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Article Omission · 冠詞省略</div>
+          <div class="mistake-example"><span class="wrong">I am software engineer</span> · <span class="right">I am a software engineer</span></div>
+        </div>
+        <div class="mistake-count">HIGH</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">02</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Subject Omission · 主詞省略</div>
+          <div class="mistake-example"><span class="wrong">easy say is busy</span> · <span class="right">basically I'm busy</span></div>
+        </div>
+        <div class="mistake-count">HIGH</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">03</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Preposition of Time · at/on/in</div>
+          <div class="mistake-example"><span class="wrong">at Friday</span> · <span class="right">on Friday</span></div>
+        </div>
+        <div class="mistake-count">HIGH</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">04</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Chinese → English Direct Translation</div>
+          <div class="mistake-example"><span class="wrong">easy say</span> · <span class="right">basically / in short</span></div>
+        </div>
+        <div class="mistake-count">HIGH</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">05</div>
+        <div class="mistake-body">
+          <div class="mistake-name">"take" + Redundant "go"</div>
+          <div class="mistake-example"><span class="wrong">take kids go to school</span> · <span class="right">take kids to school</span></div>
+        </div>
+        <div class="mistake-count">MED</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">06</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Redundant "do work"</div>
+          <div class="mistake-example"><span class="wrong">to do work</span> · <span class="right">to work</span></div>
+        </div>
+        <div class="mistake-count">MED</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">07</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Frequency Pattern · N times a week</div>
+          <div class="mistake-example"><span class="wrong">four times in week</span> · <span class="right">four times a week</span></div>
+        </div>
+        <div class="mistake-count">MED</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">08</div>
+        <div class="mistake-body">
+          <div class="mistake-name">"by" + V-ing</div>
+          <div class="mistake-example"><span class="wrong">by watch Netflix</span> · <span class="right">by watching Netflix</span></div>
+        </div>
+        <div class="mistake-count">MED</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">09</div>
+        <div class="mistake-body">
+          <div class="mistake-name">List Punctuation · Oxford Comma</div>
+          <div class="mistake-example"><span class="wrong">A, B and C</span> · <span class="right">A, B, and C</span></div>
+        </div>
+        <div class="mistake-count">MED</div>
+      </div>
+      <div class="mistake">
+        <div class="mistake-rank">10</div>
+        <div class="mistake-body">
+          <div class="mistake-name">Comma Splice (two sentences)</div>
+          <div class="mistake-example"><span class="wrong">…work, basically I'm busy</span> · <span class="right">…work, so basically…</span></div>
+        </div>
+        <div class="mistake-count">MED</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ GRAMMAR PATTERNS ═══════ -->
+  <section class="section scroll-reveal" style="background: var(--cream-deep);">
+    <div class="section-header">
+      <span class="section-num">IV.</span>
+      <span class="section-kicker">THE PATTERN LIBRARY — 文法範式</span>
+    </div>
+    <h2 class="section-title">Three <em>patterns,</em><br>committed to memory.</h2>
+
+    <div class="patterns">
+      <div class="pattern">
+        <div class="pattern-num">PATTERN · 01</div>
+        <h3 class="pattern-title">Prepositions <em>of time.</em></h3>
+        <div class="pattern-chinese">時間介系詞 · at · on · in</div>
+        <div class="pattern-rule">AT → clock time<br>ON → day / date<br>IN → month / year / season</div>
+        <div class="pattern-examples">
+          <div><span class="hi">at</span> 7 AM · <span class="hi">at</span> noon</div>
+          <div><span class="hi">on</span> Friday · <span class="hi">on</span> April 5th</div>
+          <div><span class="hi">in</span> 2026 · <span class="hi">in</span> summer</div>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="pattern-num">PATTERN · 02</div>
+        <h3 class="pattern-title">Frequency, <em>counted.</em></h3>
+        <div class="pattern-chinese">頻率表達 · N times a 週期</div>
+        <div class="pattern-rule">Number + <strong>times</strong> + <strong>a</strong> + unit<br>Use "<strong>a</strong>" — never "in"!</div>
+        <div class="pattern-examples">
+          <div>once <span class="hi">a</span> day</div>
+          <div>twice <span class="hi">a</span> week</div>
+          <div>four times <span class="hi">a</span> week</div>
+          <div>three times <span class="hi">a</span> month</div>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="pattern-num">PATTERN · 03</div>
+        <h3 class="pattern-title">By + <em>V-ing.</em></h3>
+        <div class="pattern-chinese">動名詞表方法 · 用某方式做某事</div>
+        <div class="pattern-rule">After "by" → always V-<strong>ing</strong><br>All items in list must match</div>
+        <div class="pattern-examples">
+          <div>I relax <span class="hi">by reading</span>.</div>
+          <div>I unwind <span class="hi">by watching</span> Netflix,</div>
+          <div><span class="hi">playing</span> badminton, or</div>
+          <div><span class="hi">singing</span>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MANIFESTO ═══════ -->
+  <section class="manifesto scroll-reveal">
+    <div class="manifesto-inner">
+      <div class="manifesto-label">The Manifesto · 宣言</div>
+      <h2 class="manifesto-text">
+        To <em>communicate</em> in English<br>
+        <span class="underline">fluently.</span> To lead a team.<br>
+        To become a <em>Staff Engineer.</em>
+      </h2>
+
+      <div class="manifesto-goals">
+        <div class="goal">
+          <div class="goal-num">i.</div>
+          <div class="goal-body">
+            <h3>English Proficiency</h3>
+            <p>Practice weekly with Kiddy. Drill grammar, vocabulary, and role-play conversation. Record progress. Own the mistakes, but don't repeat them.</p>
+          </div>
+        </div>
+        <div class="goal">
+          <div class="goal-num">ii.</div>
+          <div class="goal-body">
+            <h3>Staff Engineer Promotion</h3>
+            <p>Build depth in backend & cloud systems. Mentor others. Lead cross-team initiatives. Communicate technical ideas with clarity and confidence — in any language.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ COLOPHON ═══════ -->
+  <footer class="colophon">
+    <div>Set in Fraunces & Instrument Sans</div>
+    <div class="colophon-center">— to be continued, patiently. —</div>
+    <div>Printed in Taipei · MMXXVI</div>
+  </footer>
+
+<script>
+  // Scroll-triggered reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

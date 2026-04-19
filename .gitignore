@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# JetBrains IDEs (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Editor backups
+*~
+*.swp
+*.swo
+*.bak
+
+# OS thumbnails
+Thumbs.db
+ehthumbs.db
+
+# Node (in case you add interactive dashboard features later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
