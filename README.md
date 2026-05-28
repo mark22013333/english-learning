@@ -1,111 +1,121 @@
-# English Learning with Kiddy — Personal Notes
+# English Learning with Kiddy
 
-> Yu (Mark) 的英文學習筆記資料夾 — 搭配 Kiddy 老師的 Speaking Lesson 課程進行練習與複習。
+Yu (Mark) 的英文學習筆記與每日複習系統。這個 repo 用來保存原始教材、整理後的 Markdown 筆記，並透過 GitHub Pages 提供每日複習任務台。
 
----
+## 目前目標
 
-## 📁 Directory Structure 資料夾結構
+1. 把 PDF、圖片教材整理成可長期複習的 Markdown 知識庫。
+2. 每日複習常犯錯、詞彙片語、句型與口說問題。
+3. 讓每次新增教材都有固定流程，不用重新解釋需求。
+4. 保留原始教材，方便之後回頭檢查來源。
 
-```
+## 資料夾結構
+
+```text
 english-learning/
-├── README.md                           # 這個檔案：總覽與使用說明
-├── dashboard.html                      # 🎨 視覺化儀表板 (在瀏覽器打開)
-├── dashboard-history/                  #    早期設計版本
-│
-├── units/                              # 📚 課本單元筆記
-│   ├── unit-01-self-introduction/      #    Unit 1: 自我介紹
-│   └── unit-02-daily-routine/          #    Unit 2: 日常作息與週末活動
-│
-├── sessions/                           # 🎯 每次練習的 session log
-│   └── YYYY-MM-DD-topic.md             #    (檔名格式：日期-主題)
-│
-├── grammar-reference/                  # 📖 跨單元通用的文法筆記
+├── README.md
+├── AGENTS.md
+├── index.html
+├── dashboard.html
+├── css/
+├── js/
+├── data/
+│   ├── units.json
+│   ├── review-items.json
+│   ├── mistakes.json
+│   ├── unit1.json
+│   ├── unit2.json
+│   └── unit3.json
+├── sources/
+│   ├── Unit 1 - Self-Introduction.pdf
+│   ├── Unit 2 Daily Routine _ Weekend Activities.pdf
+│   └── Unit 3 - Personality.pdf
+├── units/
+│   ├── unit-01-self-introduction/
+│   │   ├── metadata.json
+│   │   └── notes.md
+│   ├── unit-02-daily-routine/
+│   │   ├── metadata.json
+│   │   └── notes.md
+│   └── unit-03-personality/
+│       ├── metadata.json
+│       └── notes.md
+├── sessions/
+│   └── 2026-04-19-unit2-speaking-practice.md
+├── grammar-reference/
 │   ├── prepositions-of-time.md
 │   ├── frequency-expressions.md
 │   └── by-ving-and-parallel-structure.md
-│
-└── personal-notes/                     # 💡 個人常犯錯誤與學習重點
+└── personal-notes/
     └── common-mistakes.md
 ```
 
----
+## 每日複習
 
-## 🎯 How to Use 如何使用
+打開 `index.html` 或 GitHub Pages 網站後，首頁會顯示「今日複習任務台」：
 
-### 複習單元內容
-打開 `units/` 底下對應的資料夾，裡面有：
-- 詞彙表 (Vocabulary)
-- 常用片語 (Common Phrases)
-- 文法結構 (Grammar Structures)
-- 我的答案 (My Answers)
+- 常犯錯提醒：優先複習容易重複出現的錯誤。
+- 詞彙與片語：用例句和提示檢查理解。
+- 口說問題：練習 3-5 句長回答。
+- 單元入口：快速回到每個 unit 的完整練習內容。
 
-### 複習某次練習
-打開 `sessions/` 底下的日期檔案，可以看到：
-- 那次練習的每個題目
-- 我的每次嘗試
-- Claude 給的 hints
-- 最後正確版本
-- 學到的重點
+v1 使用簡易間隔複習：依照 `data/review-items.json` 的 `nextReview`、`difficulty`、`mistakeTags` 產生今日清單。之後可以再升級成答題紀錄驅動。
 
-### 查文法規則
-打開 `grammar-reference/` 查特定文法主題（preposition, frequency 等）。
+## 新增教材流程
 
-### 看我常犯的錯
-打開 `personal-notes/common-mistakes.md` — 這裡記錄了我重複出現的錯誤模式，每次練習前可以快速瀏覽。
+把 PDF 或圖片放進 `sources/`，然後請助理：
 
-### 看視覺化儀表板
-在瀏覽器打開 `dashboard.html` — 這是一個包含所有進度、錯誤追蹤、文法範式的互動式儀表板，採用 Engineering Logbook 風格設計（warm walnut 配色，JetBrains Mono + IBM Plex Mono 字體）。
+```text
+請將這份 PDF/圖片整理成英文學習單元：
+1. 摘要中英對照
+2. 5-10 個關鍵字詞與例句
+3. 句型與文法重點
+4. 蘇格拉底式練習問題
+5. 我的常犯錯提醒
+6. Role-play 情境
+7. 產生可加入每日複習的題目
+```
 
-`dashboard-history/` 資料夾保存了四個設計迭代版本，供設計參考。
+助理應該保留原始檔，並產生或更新：
 
----
+- `units/unit-XX-topic/notes.md`
+- `units/unit-XX-topic/metadata.json`
+- `data/unitX.json`
+- `data/units.json`
+- `data/review-items.json`
+- 必要時更新 `grammar-reference/` 與 `personal-notes/common-mistakes.md`
 
-## 🤖 For Future Claude Sessions
+## 筆記格式
 
-如果你是未來的 Claude，這是繼續維護這個筆記系統的指引：
+每個單元的 `notes.md` 建議包含：
 
-### 新增 session log
+1. Core Summary / 核心摘要
+2. Vocabulary / 關鍵字詞
+3. Useful Patterns / 句型與文法
+4. Socratic Practice / 蘇格拉底式練習
+5. Common Mistakes / 常犯錯
+6. Role-play / 情境模擬
+7. Daily Review Items / 可加入每日複習的題目
+
+## 練習紀錄
+
 每次 Speaking practice 結束後，在 `sessions/` 建立新檔案：
-- 檔名格式：`YYYY-MM-DD-topic.md`（例如 `2026-04-26-unit3-shopping.md`）
-- 內容必須包含：每個題目的每次嘗試、修正重點、最終正確版本、學到的 patterns
 
-### 新增單元
-當 Yu 開始新單元時，在 `units/` 建立新資料夾（例如 `unit-03-xxx/`），並在其中建立 `notes.md`。
+- 檔名格式：`YYYY-MM-DD-topic.md`
+- 內容包含：題目、每次嘗試、提示、最終版本、學到的 pattern、下次複習建議。
 
-### 更新 common-mistakes.md
-每次發現 Yu 有重複出現的錯誤，就更新 `personal-notes/common-mistakes.md`，並加上該錯誤最新出現的日期。
+## 進度
 
-### 新增文法主題
-當練習中出現新的通用文法 pattern，就在 `grammar-reference/` 建立新檔案（例如 `present-perfect.md`, `conditionals.md`）。
-
-### 更新這個 README
-每次新增重要檔案時，記得更新本 README 的目錄結構和 Session Index。
-
----
-
-## 🗓️ Session Index 練習紀錄索引
-
-| 日期 | Unit | 主題 | 檔案 |
+| Unit | 主題 | 狀態 | 筆記 |
 |------|------|------|------|
-| 2026-04-19 | Unit 2 | Daily Routine Speaking Practice (Q1–Q3) | [sessions/2026-04-19-unit2-speaking-practice.md](sessions/2026-04-19-unit2-speaking-practice.md) |
+| Unit 1 | Self-Introduction | Completed | [notes](units/unit-01-self-introduction/notes.md) |
+| Unit 2 | Daily Routine & Weekend Activities | In Progress | [notes](units/unit-02-daily-routine/notes.md) |
+| Unit 3 | Personality | Imported | [notes](units/unit-03-personality/notes.md) |
 
----
+## 學習目標
 
-## 📊 Progress Tracker 進度追蹤
+1. 提升英文口說流暢度，能自信介紹自己、工作與想法。
+2. 累積職場與技術討論常用英文，支援 Staff Engineer 職涯目標。
+3. 每次練習都抓出重複錯誤，並透過每日複習逐步修正。
 
-| Unit | 主題 | 狀態 |
-|------|------|------|
-| Unit 1 | Self-Introduction | ✅ Completed |
-| Unit 2 | Daily Routine & Weekend Activities | 🔄 In Progress |
-
----
-
-## 🎓 My Learning Goals
-
-1. 提升英文口說流暢度，成為能自信介紹自己與日常工作的 engineer
-2. 目標晉升到 Staff Engineer 職位
-3. 每次練習都要抓出重複錯誤並逐步改善
-
----
-
-*Last updated: 2026-04-19*
+Last updated: 2026-05-28

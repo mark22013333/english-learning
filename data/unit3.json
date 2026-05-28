@@ -1,0 +1,158 @@
+{
+  "id": "unit3",
+  "title": "Personality",
+  "level": "A1",
+  "icon": "🧭",
+  "sections": [
+    {
+      "type": "vocabulary",
+      "title": "Vocabulary",
+      "items": [
+        { "word": "brave", "chinese": "勇敢的", "example": "The brave firefighter saved the cat." },
+        { "word": "cheerful", "chinese": "開朗的", "example": "She is cheerful and always smiles." },
+        { "word": "easygoing", "chinese": "隨和的", "example": "My teacher is very easygoing." },
+        { "word": "generous", "chinese": "慷慨的", "example": "My uncle is generous and helps many people." },
+        { "word": "helpful", "chinese": "樂於助人的", "example": "The staff was helpful at the hotel." },
+        { "word": "honest", "chinese": "誠實的", "example": "He is honest and always tells the truth." },
+        { "word": "intelligent", "chinese": "聰明的", "example": "She is very intelligent and learns quickly." },
+        { "word": "nervous", "chinese": "緊張的", "example": "I feel nervous before a test." },
+        { "word": "reliable", "chinese": "可靠的", "example": "My colleague is very reliable." },
+        { "word": "selfish", "chinese": "自私的", "example": "The boy was selfish and did not share." },
+        { "word": "serious", "chinese": "嚴肅的", "example": "My boss is serious at work." },
+        { "word": "sociable", "chinese": "好交際的", "example": "She is sociable and likes meeting people." }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": "Useful Patterns",
+      "subtitle": "Describe personality and explain your reason",
+      "items": [
+        {
+          "rule": "Describe personality",
+          "usage": "Use be verb + adjective: \"I am reliable\" / \"She is cheerful.\"",
+          "examples": [
+            "I am helpful and reliable at work.",
+            "My friend is cheerful and easygoing.",
+            "My coworker is intelligent, serious, and reliable."
+          ]
+        },
+        {
+          "rule": "Give reasons",
+          "usage": "Use because to explain why a personality trait matters.",
+          "examples": [
+            "I like friends who are honest because I can trust them.",
+            "I am reliable because I always finish my tasks on time.",
+            "Being sociable is useful because it helps people communicate."
+          ]
+        },
+        {
+          "rule": "Compare traits",
+          "usage": "Use \"more of a/an + adjective + person\" for a natural comparison.",
+          "examples": [
+            "I am more of an easygoing person.",
+            "I am more serious at work than at home."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "conversation",
+      "title": "Speaking Questions",
+      "subtitle": "Answer with 3-5 sentences when possible",
+      "items": [
+        {
+          "question": "How would you describe your personality?",
+          "answers": [
+            "I am helpful to my friends and cheerful with my family.",
+            "At work, I am serious and reliable because I finish my tasks on time."
+          ]
+        },
+        {
+          "question": "What personality traits do you like in friends?",
+          "answers": [
+            "I like friends who are reliable, easygoing, and honest.",
+            "I like reliable friends because I can trust them."
+          ]
+        },
+        {
+          "question": "Are you more sociable or serious?",
+          "answers": [
+            "I am more serious at work, but I can be easygoing with friends.",
+            "I am not very sociable, but I like going out with close friends."
+          ]
+        },
+        {
+          "question": "When do you usually feel nervous?",
+          "answers": [
+            "I usually feel nervous during a test or before an interview."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "roleplay",
+      "title": "Role Play: New Team Member",
+      "scenarios": [
+        {
+          "name": "Two coworkers discuss Kevin",
+          "dialogue": [
+            { "speaker": "Anna", "line": "Hey David, have you met the new employee, Kevin?" },
+            { "speaker": "David", "line": "Yes, I talked to him yesterday. He seems very intelligent and polite." },
+            { "speaker": "Anna", "line": "I agree. I also think he is very sociable. During lunch, he talked with everyone in the office." },
+            { "speaker": "David", "line": "It is good to have someone friendly on the team." },
+            { "speaker": "Anna", "line": "Do you think he will work well with us?" },
+            { "speaker": "David", "line": "I think so. He seems reliable and hardworking. He said he likes helping coworkers." },
+            { "speaker": "Anna", "line": "That is great. A helpful colleague makes a big difference." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "title": "Reading: Understanding Personality at Work",
+      "paragraphs": [
+        {
+          "text": "People have many different personalities, and these personalities affect how they work with others.",
+          "key_vocab": ["personalities", "affect", "work with others"]
+        },
+        {
+          "text": "In a workplace, personality can influence communication, teamwork, and productivity.",
+          "key_vocab": ["workplace", "communication", "teamwork", "productivity"]
+        },
+        {
+          "text": "Reliable employees are valuable because other people can trust them to finish their work on time.",
+          "key_vocab": ["reliable", "valuable", "trust"]
+        },
+        {
+          "text": "In a successful workplace, it is important to respect different personalities and learn how to work together.",
+          "key_vocab": ["successful workplace", "respect", "work together"]
+        }
+      ],
+      "comprehension": [
+        { "question": "How can sociable people help the workplace?", "answer": "They can help create a friendly work environment." },
+        { "question": "Why are reliable employees important?", "answer": "Other people can trust them to finish work on time." },
+        { "question": "What personality traits are good for leaders?", "answer": "Brave, confident, honest, and generous traits are useful for leaders." },
+        { "question": "What problems can nervous or selfish employees cause?", "answer": "They may avoid speaking in meetings or focus only on their own success." }
+      ]
+    },
+    {
+      "type": "qa",
+      "title": "Socratic Practice",
+      "items": [
+        { "question": "Use four personality words to describe someone you know.", "hint": "My ___ is very..., ..., ..., and..." },
+        { "question": "Why is honesty important in friendships?", "hint": "Honesty is important because..." },
+        { "question": "Which personality trait do you want to improve?", "hint": "I want to become more... because..." },
+        { "question": "Fix this sentence: I am more easygoing person.", "hint": "Try: I am more of an..." }
+      ]
+    },
+    {
+      "type": "notes",
+      "title": "Common Mistakes",
+      "items": [
+        { "point": "Article before person", "detail": "Say \"I am more of an easygoing person,\" not \"I am more easygoing person.\"", "chinese": "person 是單數可數名詞，要有冠詞。" },
+        { "point": "Being + adjective as subject", "detail": "Say \"Being too serious is boring,\" not \"too much serious is boring.\"", "chinese": "形容詞當主詞時，可用 being + adjective。" },
+        { "point": "Good at + field", "detail": "Say \"I am good at software engineering,\" not \"intelligent with software engineering.\"", "chinese": "描述擅長領域時用 good at。" }
+      ]
+    }
+  ]
+}

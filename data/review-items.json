@@ -1,0 +1,74 @@
+[
+  {
+    "id": "mistake-article-job",
+    "type": "mistake",
+    "sourceUnit": "unit1",
+    "title": "冠詞：職業名稱前要加 a/an",
+    "prompt": "Fix this sentence: I am software engineer.",
+    "answer": "I am a software engineer.",
+    "difficulty": 3,
+    "lastReviewed": "2026-05-25",
+    "nextReview": "2026-05-28",
+    "mistakeTags": ["articles", "self-introduction"]
+  },
+  {
+    "id": "mistake-frequency-a-week",
+    "type": "mistake",
+    "sourceUnit": "unit2",
+    "title": "頻率：N times a week",
+    "prompt": "Fix this phrase: four times in week.",
+    "answer": "four times a week",
+    "difficulty": 3,
+    "lastReviewed": "2026-05-24",
+    "nextReview": "2026-05-28",
+    "mistakeTags": ["frequency", "prepositions"]
+  },
+  {
+    "id": "vocab-reliable",
+    "type": "vocabulary",
+    "sourceUnit": "unit3",
+    "title": "Vocabulary: reliable",
+    "prompt": "Make one sentence with reliable.",
+    "answer": "I am reliable at work because I always finish my tasks on time.",
+    "difficulty": 2,
+    "lastReviewed": "2026-05-26",
+    "nextReview": "2026-05-28",
+    "mistakeTags": ["personality", "workplace"]
+  },
+  {
+    "id": "speaking-personality",
+    "type": "speaking",
+    "sourceUnit": "unit3",
+    "title": "Speaking: describe your personality",
+    "prompt": "How would you describe your personality? Answer in 3-5 sentences.",
+    "answer": "Use at least three adjectives and one reason with because.",
+    "difficulty": 2,
+    "lastReviewed": "2026-05-26",
+    "nextReview": "2026-05-28",
+    "mistakeTags": ["personality", "speaking"]
+  },
+  {
+    "id": "pattern-by-ving",
+    "type": "pattern",
+    "sourceUnit": "unit2",
+    "title": "句型：by + V-ing",
+    "prompt": "Fix this sentence: I unwind by watch Netflix.",
+    "answer": "I unwind by watching Netflix.",
+    "difficulty": 2,
+    "lastReviewed": "2026-05-23",
+    "nextReview": "2026-05-29",
+    "mistakeTags": ["by-ving", "parallel-structure"]
+  },
+  {
+    "id": "speaking-daily-routine",
+    "type": "speaking",
+    "sourceUnit": "unit2",
+    "title": "Speaking: typical weekday",
+    "prompt": "Describe your typical weekday in 4-6 sentences.",
+    "answer": "Use sequence words: first, then, after lunch, after work.",
+    "difficulty": 2,
+    "lastReviewed": "2026-05-22",
+    "nextReview": "2026-05-30",
+    "mistakeTags": ["routine", "sequence"]
+  }
+]

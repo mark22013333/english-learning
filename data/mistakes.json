@@ -1,0 +1,52 @@
+[
+  {
+    "id": "articles",
+    "priority": "High",
+    "title": "Article Omission",
+    "chinese": "冠詞省略",
+    "watchFor": "職業、單數可數名詞、特定地點。",
+    "wrong": "I am software engineer.",
+    "better": "I am a software engineer.",
+    "source": "personal-notes/common-mistakes.md"
+  },
+  {
+    "id": "subject-omission",
+    "priority": "High",
+    "title": "Subject Omission",
+    "chinese": "主詞省略",
+    "watchFor": "中文直覺省略主詞時，英文句子會不完整。",
+    "wrong": "Have a meeting tomorrow.",
+    "better": "I have a meeting tomorrow.",
+    "source": "personal-notes/common-mistakes.md"
+  },
+  {
+    "id": "prepositions-time",
+    "priority": "High",
+    "title": "Prepositions of Time",
+    "chinese": "時間介系詞",
+    "watchFor": "精確時間用 at，星期日期用 on，月份年份用 in。",
+    "wrong": "at Friday",
+    "better": "on Friday",
+    "source": "grammar-reference/prepositions-of-time.md"
+  },
+  {
+    "id": "by-ving",
+    "priority": "High",
+    "title": "By + V-ing",
+    "chinese": "用某方式做某事",
+    "watchFor": "by 後面要接 V-ing，列表時形式要一致。",
+    "wrong": "I unwind by watch Netflix.",
+    "better": "I unwind by watching Netflix.",
+    "source": "grammar-reference/by-ving-and-parallel-structure.md"
+  },
+  {
+    "id": "personality-comparison",
+    "priority": "Medium",
+    "title": "Personality Comparison",
+    "chinese": "個性比較句",
+    "watchFor": "描述自己是哪一種人時，person 前面要有冠詞。",
+    "wrong": "I am more easygoing person.",
+    "better": "I am more of an easygoing person.",
+    "source": "units/unit-03-personality/notes.md"
+  }
+]
