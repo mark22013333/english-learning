@@ -1,0 +1,235 @@
+{
+  "id": "unit4",
+  "title": "Food & Ordering Food",
+  "level": "A1-B1",
+  "icon": "🍽️",
+  "sections": [
+    {
+      "type": "vocabulary",
+      "title": "Vocabulary: Food & Taste",
+      "items": [
+        { "word": "cuisine", "chinese": "菜系 / 料理風格", "example": "I love Japanese cuisine." },
+        { "word": "ingredient", "chinese": "食材", "example": "This dish has fresh ingredients." },
+        { "word": "dish", "chinese": "一道菜", "example": "This is my favorite dish." },
+        { "word": "sweet", "chinese": "甜的", "example": "This cake is very sweet." },
+        { "word": "sour", "chinese": "酸的", "example": "The soup tastes sour." },
+        { "word": "bitter", "chinese": "苦的", "example": "Coffee can be bitter." },
+        { "word": "salty", "chinese": "鹹的", "example": "The fries are too salty." },
+        { "word": "healthy", "chinese": "健康的", "example": "Vegetables are healthy." },
+        { "word": "junk food", "chinese": "垃圾食物", "example": "I try not to eat junk food." },
+        { "word": "portion", "chinese": "份量", "example": "The portion is very big." },
+        { "word": "recommend", "chinese": "推薦", "example": "I recommend this dish." },
+        { "word": "vegetarian", "chinese": "素食者", "example": "She is a vegetarian." }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Vocabulary: Ordering Food",
+      "items": [
+        { "word": "menu", "chinese": "菜單", "example": "Could I see the menu, please?" },
+        { "word": "waiter / waitress", "chinese": "服務生", "example": "The waiter took our order quickly." },
+        { "word": "cashier", "chinese": "收銀員", "example": "Please pay at the cashier." },
+        { "word": "combo meal", "chinese": "套餐", "example": "I'll have a combo meal." },
+        { "word": "side dish", "chinese": "配菜", "example": "I'll add a side dish of fries." },
+        { "word": "beverage", "chinese": "飲料", "example": "What beverages do you have?" },
+        { "word": "refill", "chinese": "續杯", "example": "Can I get a refill, please?" },
+        { "word": "to go / takeaway", "chinese": "外帶", "example": "I'd like this to go." },
+        { "word": "dine in", "chinese": "內用", "example": "We prefer to dine in." },
+        { "word": "allergy", "chinese": "過敏", "example": "I have a peanut allergy." },
+        { "word": "recommendation", "chinese": "推薦 / 建議", "example": "Do you have any recommendations?" },
+        { "word": "bill / check", "chinese": "帳單", "example": "Could we have the bill, please?" }
+      ]
+    },
+    {
+      "type": "phrases",
+      "title": "Restaurant Phrases",
+      "items": [
+        { "phrase": "I'd like...", "example": "I'd like a combo meal with a burger, fries, and a soft drink.", "question": "How can you order politely?" },
+        { "phrase": "Could I have...?", "example": "Could I have a glass of water?", "question": "How can you ask for an item politely?" },
+        { "phrase": "What do you recommend?", "example": "What do you recommend for a first-time customer?", "question": "How can you ask for a recommendation?" },
+        { "phrase": "What's in this dish?", "example": "What's in this pasta?", "question": "How can you ask about ingredients?" },
+        { "phrase": "Could you make it less spicy?", "example": "Could you make it less spicy, please?", "question": "How can you make a special request?" },
+        { "phrase": "Could we have the bill?", "example": "Could we have the bill, please?", "question": "How can you ask to pay?" }
+      ]
+    },
+    {
+      "type": "grammar",
+      "title": "Useful Patterns",
+      "subtitle": "Food preferences, polite ordering, and restaurant requests",
+      "items": [
+        {
+          "rule": "Talk about preferences",
+          "usage": "Use like/love/prefer to describe the food you enjoy.",
+          "examples": [
+            "I really like Asian cuisine, especially spicy dishes.",
+            "I love Thai food because the flavors are amazing.",
+            "I prefer something healthy, like grilled chicken and vegetables."
+          ]
+        },
+        {
+          "rule": "Describe taste",
+          "usage": "Use taste + adjective, or this dish is + adjective.",
+          "examples": [
+            "The soup tastes sour.",
+            "The fries are too salty.",
+            "This dish is fresh and delicious."
+          ]
+        },
+        {
+          "rule": "Make suggestions",
+          "usage": "Use recommend + noun, or you should try + food.",
+          "examples": [
+            "I recommend the grilled chicken.",
+            "You should try this soup.",
+            "Do you have any recommendations?"
+          ]
+        },
+        {
+          "rule": "Order politely",
+          "usage": "Use I'd like or Could I have instead of direct I want.",
+          "examples": [
+            "I'd like to order now.",
+            "I'd like a combo meal, please.",
+            "Could I have a glass of water?"
+          ]
+        },
+        {
+          "rule": "Handle problems politely",
+          "usage": "Use Excuse me or I'm afraid before describing the problem.",
+          "examples": [
+            "Excuse me, this dish is a bit cold.",
+            "I'm afraid this is too salty.",
+            "Could you replace it, please?"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "conversation",
+      "title": "Speaking Questions",
+      "subtitle": "Answer first, then upgrade your answer with a reason",
+      "items": [
+        {
+          "question": "What is your favorite food?",
+          "answers": [
+            "My favorite food is beef noodle soup.",
+            "It tastes savory and a little spicy, and I like it because it is warm and filling."
+          ]
+        },
+        {
+          "question": "Do you prefer spicy or sweet food? Why?",
+          "answers": [
+            "I prefer spicy food because it has a stronger flavor.",
+            "I like sweet food sometimes, but I try not to eat too many desserts."
+          ]
+        },
+        {
+          "question": "What do you usually order at a restaurant?",
+          "answers": [
+            "I usually order sushi or sashimi at a Japanese restaurant.",
+            "If I want something simple, I order a combo meal with a drink."
+          ]
+        },
+        {
+          "question": "How often do you eat fast food?",
+          "answers": [
+            "I eat fast food once or twice a month.",
+            "I think it is convenient, but I try to eat it in moderation."
+          ]
+        },
+        {
+          "question": "Have you ever had a bad experience in a restaurant?",
+          "answers": [
+            "Yes, once my dish was cold, so I said, \"Excuse me, this dish is a bit cold.\""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "roleplay",
+      "title": "Role Play: At a Restaurant",
+      "scenarios": [
+        {
+          "name": "Reservation, ordering, problem, and bill",
+          "dialogue": [
+            { "speaker": "Waiter", "line": "Good evening. Welcome! Do you have a reservation?" },
+            { "speaker": "Customer", "line": "Yes, it's under the name Chen." },
+            { "speaker": "Waiter", "line": "Right this way. Here are your menus." },
+            { "speaker": "Customer", "line": "Thank you." },
+            { "speaker": "Waiter", "line": "Are you ready to order?" },
+            { "speaker": "Customer", "line": "Not yet. Could you recommend something popular?" },
+            { "speaker": "Waiter", "line": "Our grilled chicken with vegetables is very popular." },
+            { "speaker": "Customer", "line": "That sounds good. What ingredients does it have?" },
+            { "speaker": "Waiter", "line": "It includes chicken, fresh vegetables, and a light sauce." },
+            { "speaker": "Customer", "line": "Great. I'll have that, please." },
+            { "speaker": "Waiter", "line": "Would you like anything else?" },
+            { "speaker": "Customer", "line": "Yes, could we get a side salad?" },
+            { "speaker": "Waiter", "line": "Of course. Is everything for dine-in?" },
+            { "speaker": "Customer", "line": "Yes, it is." },
+            { "speaker": "Customer", "line": "Excuse me, this dish is a bit cold." },
+            { "speaker": "Waiter", "line": "I'm very sorry. I'll replace it right away." },
+            { "speaker": "Customer", "line": "Could we have the bill, please?" },
+            { "speaker": "Waiter", "line": "Certainly. Here you are." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "reading",
+      "title": "Reading: Healthy Eating & Fast Food",
+      "paragraphs": [
+        {
+          "text": "Eating healthy food is important for our bodies and minds. Junk food like burgers, fries, and sugary drinks may taste good, but it is not very healthy.",
+          "key_vocab": ["healthy food", "bodies and minds", "junk food"]
+        },
+        {
+          "text": "A healthy diet includes vegetables, fruits, whole grains, and protein like fish or chicken. These foods give us energy and help us stay strong.",
+          "key_vocab": ["healthy diet", "whole grains", "protein"]
+        },
+        {
+          "text": "Some people have special diets. Vegetarians do not eat meat, and others may avoid certain ingredients because of allergies.",
+          "key_vocab": ["special diets", "vegetarians", "allergies"]
+        },
+        {
+          "text": "Fast food is popular because it is quick, affordable, and easy to find. It is convenient for busy people, but it is often high in fat, sugar, and salt.",
+          "key_vocab": ["quick", "affordable", "high in fat"]
+        },
+        {
+          "text": "Some fast food chains now offer healthier options, such as salads, fruit, and low-calorie meals. It is important to make balanced choices and eat fast food in moderation.",
+          "key_vocab": ["healthier options", "balanced choices", "in moderation"]
+        }
+      ],
+      "comprehension": [
+        { "question": "Why is healthy eating important?", "answer": "It is important for our bodies and minds, and it helps us have energy." },
+        { "question": "What foods are part of a healthy diet?", "answer": "Vegetables, fruits, whole grains, and protein are part of a healthy diet." },
+        { "question": "What do vegetarians avoid?", "answer": "Vegetarians avoid meat." },
+        { "question": "Why do people choose fast food?", "answer": "People choose fast food because it is quick, affordable, convenient, and easy to find." },
+        { "question": "What are the disadvantages of fast food?", "answer": "It is often high in fat, sugar, and salt, so it can cause health problems if eaten too often." },
+        { "question": "How can people eat fast food in a healthier way?", "answer": "They can choose healthier options, make balanced choices, and eat fast food in moderation." }
+      ]
+    },
+    {
+      "type": "qa",
+      "title": "Socratic Practice",
+      "items": [
+        { "question": "Describe your favorite food with ingredients and taste.", "hint": "My favorite food is... It has... It tastes..." },
+        { "question": "Ask a waiter for a recommendation politely.", "hint": "Could you recommend something popular?" },
+        { "question": "Ask about ingredients because of an allergy.", "hint": "Does this dish have...? I have a ... allergy." },
+        { "question": "Fix this sentence: This soup is sour taste.", "hint": "Use taste + adjective." },
+        { "question": "Fix this sentence: I recommend you this dish.", "hint": "Use recommend + noun." },
+        { "question": "Give your opinion: Is fast food good or bad?", "hint": "In my opinion,... because... However,..." }
+      ]
+    },
+    {
+      "type": "notes",
+      "title": "Common Mistakes",
+      "items": [
+        { "point": "Polite ordering", "detail": "Say \"I'd like a combo meal, please,\" not only \"I want a combo meal.\"", "chinese": "餐廳點餐用 I'd like 更禮貌。" },
+        { "point": "Taste pattern", "detail": "Say \"The soup tastes sour,\" not \"The soup is sour taste.\"", "chinese": "描述味道用 taste + adjective。" },
+        { "point": "Recommend pattern", "detail": "Say \"I recommend this dish,\" not \"I recommend you this dish.\"", "chinese": "recommend 後面可直接接推薦項目。" },
+        { "point": "Allergy count noun", "detail": "Say \"I don't have any allergies\" or \"I have a peanut allergy.\"", "chinese": "allergy 是可數名詞，否定時常用 any allergies。" },
+        { "point": "Takeaway / to go", "detail": "In the U.S., \"to go\" is very common. In Taiwan, say 外帶 in Chinese and \"to go\" in English.", "chinese": "外帶不要直譯成 take go。" }
+      ]
+    }
+  ]
+}

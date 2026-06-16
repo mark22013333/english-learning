@@ -70,5 +70,77 @@
     "lastReviewed": "2026-05-22",
     "nextReview": "2026-05-30",
     "mistakeTags": ["routine", "sequence"]
+  },
+  {
+    "id": "vocab-cuisine-dish",
+    "type": "vocabulary",
+    "sourceUnit": "unit4",
+    "title": "Vocabulary: cuisine vs dish",
+    "prompt": "Explain the difference between cuisine and dish, then make one sentence with each.",
+    "answer": "Cuisine means a style of cooking, such as Japanese cuisine. A dish means one prepared food, such as beef noodle soup.",
+    "difficulty": 2,
+    "lastReviewed": "2026-06-17",
+    "nextReview": "2026-06-17",
+    "mistakeTags": ["food", "vocabulary"]
+  },
+  {
+    "id": "pattern-taste-adjective",
+    "type": "pattern",
+    "sourceUnit": "unit4",
+    "title": "句型：taste + adjective",
+    "prompt": "Fix this sentence: This soup is sour taste.",
+    "answer": "This soup tastes sour.",
+    "difficulty": 3,
+    "lastReviewed": "2026-06-17",
+    "nextReview": "2026-06-17",
+    "mistakeTags": ["food", "taste", "adjectives"]
+  },
+  {
+    "id": "pattern-polite-ordering",
+    "type": "pattern",
+    "sourceUnit": "unit4",
+    "title": "句型：I'd like...",
+    "prompt": "Order a combo meal politely.",
+    "answer": "I'd like a combo meal with a burger, fries, and a soft drink, please.",
+    "difficulty": 2,
+    "lastReviewed": "2026-06-17",
+    "nextReview": "2026-06-17",
+    "mistakeTags": ["ordering-food", "polite-requests"]
+  },
+  {
+    "id": "mistake-recommend-pattern",
+    "type": "mistake",
+    "sourceUnit": "unit4",
+    "title": "句型：recommend + noun",
+    "prompt": "Fix this sentence: I recommend you this dish.",
+    "answer": "I recommend this dish. / I recommend the grilled chicken.",
+    "difficulty": 3,
+    "lastReviewed": "2026-06-17",
+    "nextReview": "2026-06-17",
+    "mistakeTags": ["recommend", "restaurant"]
+  },
+  {
+    "id": "speaking-food-allergy",
+    "type": "speaking",
+    "sourceUnit": "unit4",
+    "title": "Speaking: ask about allergies",
+    "prompt": "Ask whether a dish has peanuts and explain your allergy.",
+    "answer": "Does this dish have peanuts? I have a peanut allergy.",
+    "difficulty": 2,
+    "lastReviewed": "2026-06-17",
+    "nextReview": "2026-06-17",
+    "mistakeTags": ["allergy", "ingredients"]
+  },
+  {
+    "id": "speaking-fast-food-opinion",
+    "type": "speaking",
+    "sourceUnit": "unit4",
+    "title": "Speaking: fast food opinion",
+    "prompt": "Is fast food good or bad? Answer with one opinion, one reason, and one example.",
+    "answer": "In my opinion, fast food is convenient but unhealthy if we eat it too often. For example, burgers and fries are often high in fat and salt.",
+    "difficulty": 2,
+    "lastReviewed": "2026-06-17",
+    "nextReview": "2026-06-17",
+    "mistakeTags": ["fast-food", "opinion"]
   }
 ]

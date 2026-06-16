@@ -31,5 +31,16 @@
     "status": "Imported",
     "notes": "units/unit-03-personality/notes.md",
     "source": "sources/Unit 3 - Personality.pdf"
+  },
+  {
+    "id": "unit4",
+    "title": "Food & Ordering Food",
+    "level": "A1-B1",
+    "file": "data/unit4.json",
+    "icon": "🍽️",
+    "description": "Talk about food preferences, eating habits, healthy choices, and restaurant ordering.",
+    "status": "Imported",
+    "notes": "units/unit-04-food-and-ordering/notes.md",
+    "source": "sources/Unit 4 Food.pdf; sources/Unit 4 - Lesson 2 -Ordering Food.pdf"
   }
 ]

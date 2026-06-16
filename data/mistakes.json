@@ -48,5 +48,35 @@
     "wrong": "I am more easygoing person.",
     "better": "I am more of an easygoing person.",
     "source": "units/unit-03-personality/notes.md"
+  },
+  {
+    "id": "taste-adjective",
+    "priority": "Medium",
+    "title": "Taste + Adjective",
+    "chinese": "味道描述句",
+    "watchFor": "描述味道時，不要把 taste 當名詞硬接在形容詞後面。",
+    "wrong": "This soup is sour taste.",
+    "better": "This soup tastes sour.",
+    "source": "units/unit-04-food-and-ordering/notes.md"
+  },
+  {
+    "id": "recommend-pattern",
+    "priority": "Medium",
+    "title": "Recommend Pattern",
+    "chinese": "推薦句型",
+    "watchFor": "recommend 不要直翻中文「推薦你某物」。",
+    "wrong": "I recommend you this dish.",
+    "better": "I recommend this dish.",
+    "source": "units/unit-04-food-and-ordering/notes.md"
+  },
+  {
+    "id": "polite-ordering",
+    "priority": "Medium",
+    "title": "Polite Ordering",
+    "chinese": "禮貌點餐",
+    "watchFor": "餐廳點餐用 I'd like 或 Could I have，比 I want 更自然。",
+    "wrong": "I want a combo meal.",
+    "better": "I'd like a combo meal, please.",
+    "source": "grammar-reference/polite-requests-and-food-ordering.md"
   }
 ]

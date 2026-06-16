@@ -229,6 +229,67 @@ Use Present Simple for habits and routines:
 - ✅ "I **wake up** at 7 AM." (habit)
 - ✅ "I **work** remotely four times a week." (routine)
 
+### 16. Taste + Adjective 味道描述句
+
+**Problem:** 把中文「酸的味道」直接翻成 `sour taste`，句子會不自然。
+
+| ❌ Wrong | ✅ Correct | Why |
+|---------|-----------|-----|
+| "This soup is sour taste." | "This soup **tastes sour**." | `taste` 當動詞，後面接形容詞。 |
+| "The fries are salty taste." | "The fries **taste salty**." | 描述味道用 `taste + adjective`。 |
+| "This dish is delicious taste." | "This dish **is delicious**." | `delicious` 本身就是形容詞，不需要加 taste。 |
+
+**Pattern:** `Food + tastes + adjective`
+
+See details: [../units/unit-04-food-and-ordering/notes.md](../units/unit-04-food-and-ordering/notes.md)
+
+---
+
+### 17. Recommend Pattern 推薦句型
+
+**Problem:** 直翻中文「我推薦你這道菜」成 `I recommend you this dish`。
+
+| ❌ Wrong | ✅ Correct |
+|---------|-----------|
+| "I recommend you this dish." | "I recommend this dish." |
+| "Can you recommend me food?" | "Could you recommend something popular?" |
+| "Do you have recommendation?" | "Do you have any recommendations?" |
+
+**Pattern:** `recommend + noun` / `recommend something`
+
+See details: [../grammar-reference/polite-requests-and-food-ordering.md](../grammar-reference/polite-requests-and-food-ordering.md)
+
+---
+
+### 18. Polite Ordering 禮貌點餐
+
+**Problem:** 在餐廳直接用 `I want...` 可以理解，但語氣比較硬。
+
+| ❌ Less Natural | ✅ Better |
+|----------------|-----------|
+| "I want a combo meal." | "I'd like a combo meal, please." |
+| "Give me the menu." | "Could I see the menu, please?" |
+| "Give me the bill." | "Could we have the bill, please?" |
+
+**Pattern:** `I'd like...` / `Could I have...?` / `Could we have...?`
+
+See details: [../grammar-reference/polite-requests-and-food-ordering.md](../grammar-reference/polite-requests-and-food-ordering.md)
+
+---
+
+### 19. Allergy Is Countable 過敏是可數名詞
+
+| ❌ Wrong | ✅ Correct |
+|---------|-----------|
+| "I don't have allergy." | "I don't have any allergies." |
+| "I have peanut allergic." | "I have a peanut allergy." |
+| "I allergy to peanuts." | "I'm allergic to peanuts." |
+
+**Patterns:**
+- `I have a + food + allergy.`
+- `I'm allergic to + food.`
+- `I don't have any allergies.`
+
 ---
 
 ## 🟢 Things I Got Right Recently (Wins!)
@@ -256,6 +317,9 @@ Before speaking, scan this mental checklist:
 □ If listing — same form for each item? Enough commas?
 □ If using "by" — V-ing form?
 □ If joining sentences — comma splice? Use "so" or period!
+□ In restaurants — Use "I'd like..." or "Could I have...?"
+□ Taste — Use "tastes + adjective"
+□ Allergies — "a peanut allergy" / "any allergies"
 ```
 
 ---
@@ -265,3 +329,4 @@ Before speaking, scan this mental checklist:
 | Date | Changes |
 |------|---------|
 | 2026-04-19 | Initial creation based on Unit 2 Speaking Practice Q1–Q3 |
+| 2026-06-17 | Added Unit 4 food, taste, polite ordering, recommendation, and allergy patterns |
